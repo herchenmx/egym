@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGym - Ergebnis</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #2c3e50;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #64748b;
+            --accent-orange: #ff8c42;
+            --accent-green: #10b981;
+            --accent-yellow: #fbbf24;
+            --accent-red: #ef4444;
+            --border-radius: 16px;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .screen-container {
+            max-width: 1200px;
+            width: 100%;
+            background: var(--bg-primary);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .user-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+
+        .user-name {
+            font-weight: 600;
+        }
+
+        .egym-logo {
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        /* Training Results Section */
+        .session-total {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .session-total-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .session-total-meta {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .set-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .set-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .set-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.1);
+        }
+
+        .set-card.active {
+            border-color: var(--accent-orange);
+            background: #fff7ed;
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.15);
+        }
+
+        .set-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .set-number {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 16px;
+        }
+
+        .set-mode {
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .set-mode.negative {
+            background: var(--accent-yellow);
+            color: var(--text-primary);
+        }
+
+        .set-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .phase-breakdown {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e5e7eb;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .phase-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+
+        .phase-label {
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .info-icon {
+            width: 14px;
+            height: 14px;
+            background: #94a3b8;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: help;
+            position: relative;
+        }
+
+        .info-icon:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+            font-weight: 400;
+        }
+
+        .phase-value {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Performance Feedback Section */
+        .feedback-priority {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .feedback-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feedback-block {
+            margin-bottom: 10px;
+        }
+
+        .feedback-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .feedback-label {
+            font-weight: 600;
+            color: #1e40af;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .feedback-message {
+            color: var(--text-primary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .phase-performance {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .phase-perf-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phase-perf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .phase-perf-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .phase-perf-value {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .phase-perf-value.good {
+            color: var(--accent-green);
+        }
+
+        .phase-perf-value.neutral {
+            color: var(--text-primary);
+        }
+
+        .phase-perf-value.average {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.8s ease;
+        }
+
+        .progress-fill.good {
+            background: var(--accent-green);
+        }
+
+        .progress-fill.neutral {
+            background: #94a3b8;
+        }
+
+        .metric-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .metric-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .metric-value {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .metric-value.warning {
+            color: var(--accent-yellow);
+        }
+
+        .muscle-tip {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .muscle-icon {
+            font-size: 24px;
+        }
+
+        .muscle-tip-content {
+            flex: 1;
+        }
+
+        .muscle-tip-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .muscle-tip-text {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Expandable Sections */
+        .expandable-section {
+            margin-top: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .expandable-section.expanded {
+            border-color: var(--accent-orange);
+        }
+
+        .section-header {
+            padding: 16px;
+            background: #f8fafc;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .section-header:hover {
+            background: #f1f5f9;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .section-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+            color: #64748b;
+        }
+
+        .expandable-section.expanded .section-toggle {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 16px;
+        }
+
+        .expandable-section.expanded .section-content {
+            max-height: 500px;
+            padding: 16px;
+        }
+
+        .comparison-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-metric:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-label {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .comparison-value {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+        }
+
+        .comparison-change {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .comparison-change.positive {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        .comparison-change.neutral {
+            background: #f3f4f6;
+            color: var(--text-secondary);
+        }
+
+        .percentile-bar {
+            margin: 16px 0;
+            position: relative;
+        }
+
+        .percentile-track {
+            height: 12px;
+            background: linear-gradient(90deg, #ef4444 0%, #fbbf24 50%, #10b981 100%);
+            border-radius: 6px;
+        }
+
+        .percentile-marker {
+            position: absolute;
+            top: -8px;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border: 3px solid var(--accent-orange);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .percentile-label {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .encouragement-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #065f46;
+            font-weight: 500;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 18px 24px;
+            border-radius: 12px;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff7a29;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 140, 66, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 2px solid #e5e7eb;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+            transform: translateY(-2px);
+        }
+
+        .logout-timer {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 13px;
+            margin-top: 16px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen-container">
+        <div class="header">
+            <h1>Ergebnis</h1>
+            <div class="user-badge">
+                <span class="user-name">Hannah</span>
+                <span class="egym-logo">EGYM+</span>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <!-- Left Panel: Training Results -->
+            <div class="card">
+                <h2 class="card-title">📈 Trainingsergebnisse</h2>
+                
+                <div class="session-total">
+                    <div class="session-total-value">1200 kg</div>
+                    <div class="session-total-meta">40 Wiederholungen • Ø 30 kg/Wdh.</div>
+                </div>
+
+                <div class="set-list">
+                    <!-- Set 1 -->
+                    <div class="set-card" data-set="1">
+                        <div class="set-header">
+                            <span class="set-number">💪 Satz 1</span>
+                            <span class="set-mode">Regular</span>
+                        </div>
+                        <div class="set-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Gesamt</span>
+                                <span class="stat-value">600 kg</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Wiederholungen</span>
+                                <span class="stat-value">20</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Qualität</span>
+                                <span class="stat-value">72%</span>
+                            </div>
+                        </div>
+                        <div class="phase-breakdown">
+                            <div class="phase-item">
+                                <span class="phase-label">
+                                    <span class="info-icon" data-tooltip="Hebephase / Druckphase">i</span>
+                                    Anspannen:
+                                </span>
+                                <span class="phase-value">30 kg</span>
+                            </div>
+                            <div class="phase-item">
+                                <span class="phase-label">
+                                    <span class="info-icon" data-tooltip="Senkphase / Lösephase">i</span>
+                                    Entspannen:
+                                </span>
+                                <span class="phase-value">30 kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Set 2 -->
+                    <div class="set-card active" data-set="2">
+                        <div class="set-header">
+                            <span class="set-number">💪 Satz 2</span>
+                            <span class="set-mode negative">Negativ</span>
+                        </div>
+                        <div class="set-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Gesamt</span>
+                                <span class="stat-value">600 kg</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Wiederholungen</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Qualität</span>
+                                <span class="stat-value">64%</span>
+                            </div>
+                        </div>
+                        <div class="set-stats" style="margin-top: 8px;">
+                            <div class="stat-item">
+                                <span class="stat-label">Durchschnitt</span>
+                                <span class="stat-value">40 kg/Wdh.</span>
+                            </div>
+                        </div>
+                        <div class="phase-breakdown">
+                            <div class="phase-item">
+                                <span class="phase-label">
+                                    <span class="info-icon" data-tooltip="Hebephase / Druckphase">i</span>
+                                    Anspannen:
+                                </span>
+                                <span class="phase-value">25 kg</span>
+                            </div>
+                            <div class="phase-item">
+                                <span class="phase-label">
+                                    <span class="info-icon" data-tooltip="Senkphase / Lösephase">i</span>
+                                    Entspannen:
+                                </span>
+                                <span class="phase-value">55 kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Performance Feedback -->
+            <div class="card">
+                <h2 class="card-title">🎯 Leistungsübersicht</h2>
+
+                <!-- Priority Feedback - Collapsible but expanded by default -->
+                <div class="expandable-section expanded" id="priorityFeedback">
+                    <div class="section-header" onclick="toggleSection('priorityFeedback')">
+                        <span class="section-title">💡 Fokus für nächsten Satz</span>
+                        <span class="section-toggle">∨</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="feedback-block">
+                            <div class="feedback-label">Beobachtung</div>
+                            <div class="feedback-message">
+                                Deine Entspannungsphase war zu schnell.
+                            </div>
+                        </div>
+
+                        <div class="feedback-block">
+                            <div class="feedback-label">Aktion</div>
+                            <div class="feedback-message">
+                                Halte die Spannung während der gesamten Bewegung aufrecht.
+                            </div>
+                        </div>
+
+                        <div class="feedback-block">
+                            <div class="feedback-label">Tipp</div>
+                            <div class="feedback-message">
+                                Wenn es zu schwer ist, versuche den nächsten Satz mit 2 kg weniger Gewicht.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Execution Overview - Collapsible but expanded by default -->
+                <div class="expandable-section expanded" id="executionOverview">
+                    <div class="section-header" onclick="toggleSection('executionOverview')">
+                        <span class="section-title">✓ Ausführungsübersicht</span>
+                        <span class="section-toggle">∨</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="phase-performance">
+                            <div class="phase-perf-item">
+                                <div class="phase-perf-header">
+                                    <span class="phase-perf-label">
+                                        <span class="info-icon" data-tooltip="Hebephase / Druckphase">i</span>
+                                        Muskelanspannung
+                                    </span>
+                                    <span class="phase-perf-value good" id="concentric-value">87%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill good" id="concentric-bar" style="width: 87%"></div>
+                                </div>
+                            </div>
+
+                            <div class="phase-perf-item">
+                                <div class="phase-perf-header">
+                                    <span class="phase-perf-label">
+                                        <span class="info-icon" data-tooltip="Senkphase / Lösephase">i</span>
+                                        Muskelentspannung
+                                    </span>
+                                    <span class="phase-perf-value neutral" id="eccentric-value">41%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill neutral" id="eccentric-bar" style="width: 41%"></div>
+                                </div>
+                            </div>
+
+                            <div class="phase-perf-item" style="padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                <div class="phase-perf-header">
+                                    <span class="phase-perf-label">Durchschnitt</span>
+                                    <span class="phase-perf-value average" id="average-value">64%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last Session Comparison -->
+                <div class="expandable-section" id="lastSession">
+                    <div class="section-header" onclick="toggleSection('lastSession')">
+                        <span class="section-title">📊 Letzte Session</span>
+                        <span class="section-toggle">∨</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Gewicht bewegt</span>
+                            <div class="comparison-value">
+                                <span style="font-family: 'Space Mono', monospace;" id="last-weight">600 kg</span>
+                                <span class="comparison-change positive" id="last-weight-change">+3%</span>
+                            </div>
+                        </div>
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Trainingsqualität</span>
+                            <div class="comparison-value">
+                                <span style="font-family: 'Space Mono', monospace;" id="last-quality">64%</span>
+                                <span class="comparison-change positive" id="last-quality-change">+8%</span>
+                            </div>
+                        </div>
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Letzte Session</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">22.12.2025</span>
+                        </div>
+                        <div class="encouragement-box" id="last-session-encouragement">
+                            🎉 Starke Verbesserung! Du hast deine Form deutlich verbessert.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Record -->
+                <div class="expandable-section" id="personalRecord">
+                    <div class="section-header" onclick="toggleSection('personalRecord')">
+                        <span class="section-title">🏆 Persönlicher Rekord</span>
+                        <span class="section-toggle">∨</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Dein Rekord</span>
+                            <span style="font-family: 'Space Mono', monospace; font-weight: 700; color: var(--accent-orange); font-size: 20px;">825 kg</span>
+                        </div>
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Heute</span>
+                            <span style="font-family: 'Space Mono', monospace; font-weight: 700;" id="record-today">600 kg</span>
+                        </div>
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Unterschied</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);" id="record-percent">73% deines Rekords</span>
+                        </div>
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Rekord aufgestellt</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">05.11.2025</span>
+                        </div>
+                        <div class="encouragement-box" id="record-encouragement">
+                            💪 Dein Rekord ist im Negativ-Modus. Heute trainierst du Regular-Modus – weiter so!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Comparison -->
+                <div class="expandable-section" id="userComparison">
+                    <div class="section-header" onclick="toggleSection('userComparison')">
+                        <span class="section-title">👥 Vergleich mit anderen</span>
+                        <span class="section-toggle">∨</span>
+                    </div>
+                    <div class="section-content">
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+                            Frauen • 25-34 Jahre • 60-70 kg
+                        </div>
+                        
+                        <div class="percentile-bar">
+                            <div class="percentile-track"></div>
+                            <div class="percentile-marker" style="left: 65%;"></div>
+                        </div>
+                        <div class="percentile-label">
+                            Du liegst im <strong>Top 35%</strong> deiner Gruppe
+                        </div>
+
+                        <div class="comparison-metric" style="margin-top: 16px;">
+                            <span class="comparison-label">Durchschnitt Gruppe</span>
+                            <span style="font-family: 'Space Mono', monospace; font-weight: 700;">520 kg</span>
+                        </div>
+                        <div class="comparison-metric">
+                            <span class="comparison-label">Deine Leistung</span>
+                            <div class="comparison-value">
+                                <span style="font-family: 'Space Mono', monospace;">600 kg</span>
+                                <span class="comparison-change positive">+15%</span>
+                            </div>
+                        </div>
+                        <div class="encouragement-box">
+                            🌟 Du bist stärker als 65% der Nutzer in deiner Alters- und Gewichtsklasse!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-primary">Neuer Satz</button>
+        </div>
+
+        <div class="logout-timer">Automatischer Logout in 8 s</div>
+    </div>
+
+    <script>
+        // Store all section IDs
+        const sections = ['priorityFeedback', 'executionOverview', 'lastSession', 'personalRecord', 'userComparison'];
+
+        // Data for each set
+        const setData = {
+            1: {
+                concentric: 91,
+                eccentric: 53,
+                average: 72,
+                lastWeight: '600 kg',
+                lastWeightChange: '+5%',
+                lastQuality: '72%',
+                lastQualityChange: '+12%',
+                recordToday: '600 kg',
+                recordPercent: '73% deines Rekords',
+                feedback: {
+                    observation: 'Deine Entspannungsphase könnte noch kontrollierter sein.',
+                    action: 'Konzentriere dich auf eine gleichmäßige Bewegung in beiden Phasen.',
+                    tip: 'Zähle mental bis 3 während der Entspannungsphase.'
+                },
+                lastSessionEncouragement: '💪 Gute Steigerung! Deine Trainingsqualität verbessert sich kontinuierlich.',
+                recordEncouragement: '🔥 Fast auf Rekordniveau! Mit dieser Form kommst du dem Rekord näher.'
+            },
+            2: {
+                concentric: 87,
+                eccentric: 41,
+                average: 64,
+                lastWeight: '600 kg',
+                lastWeightChange: '+3%',
+                lastQuality: '64%',
+                lastQualityChange: '+8%',
+                recordToday: '600 kg',
+                recordPercent: '73% deines Rekords',
+                feedback: {
+                    observation: 'Deine Entspannungsphase war zu schnell.',
+                    action: 'Halte die Spannung während der gesamten Bewegung aufrecht.',
+                    tip: 'Wenn es zu schwer ist, versuche den nächsten Satz mit 2 kg weniger Gewicht.'
+                },
+                lastSessionEncouragement: '🎉 Starke Verbesserung! Du hast deine Form deutlich verbessert.',
+                recordEncouragement: '💪 Dein Rekord ist im Negativ-Modus. Heute trainierst du Regular-Modus – weiter so!'
+            }
+        };
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const wasExpanded = section.classList.contains('expanded');
+            
+            // Collapse all sections
+            sections.forEach(id => {
+                const sec = document.getElementById(id);
+                sec.classList.remove('expanded');
+            });
+            
+            // If the clicked section wasn't expanded, expand it
+            if (!wasExpanded) {
+                section.classList.add('expanded');
+            }
+        }
+
+        function updateRightPanel(setNumber) {
+            const data = setData[setNumber];
+            
+            // Update execution overview
+            document.getElementById('concentric-value').textContent = data.concentric + '%';
+            document.getElementById('concentric-bar').style.width = data.concentric + '%';
+            document.getElementById('eccentric-value').textContent = data.eccentric + '%';
+            document.getElementById('eccentric-bar').style.width = data.eccentric + '%';
+            document.getElementById('average-value').textContent = data.average + '%';
+            
+            // Update color classes for performance values
+            const concentricValue = document.getElementById('concentric-value');
+            const eccentricValue = document.getElementById('eccentric-value');
+            const concentricBar = document.getElementById('concentric-bar');
+            const eccentricBar = document.getElementById('eccentric-bar');
+            
+            // Reset classes
+            concentricValue.className = 'phase-perf-value';
+            eccentricValue.className = 'phase-perf-value';
+            concentricBar.className = 'progress-fill';
+            eccentricBar.className = 'progress-fill';
+            
+            // Add appropriate classes
+            concentricValue.classList.add(data.concentric >= 70 ? 'good' : 'neutral');
+            concentricBar.classList.add(data.concentric >= 70 ? 'good' : 'neutral');
+            eccentricValue.classList.add(data.eccentric >= 70 ? 'good' : 'neutral');
+            eccentricBar.classList.add(data.eccentric >= 70 ? 'good' : 'neutral');
+            
+            // Update feedback
+            document.querySelector('.feedback-block:nth-child(1) .feedback-message').textContent = data.feedback.observation;
+            document.querySelector('.feedback-block:nth-child(2) .feedback-message').textContent = data.feedback.action;
+            document.querySelector('.feedback-block:nth-child(3) .feedback-message').textContent = data.feedback.tip;
+            
+            // Update last session
+            document.getElementById('last-weight').textContent = data.lastWeight;
+            document.getElementById('last-weight-change').textContent = data.lastWeightChange;
+            document.getElementById('last-quality').textContent = data.lastQuality;
+            document.getElementById('last-quality-change').textContent = data.lastQualityChange;
+            document.getElementById('last-session-encouragement').textContent = data.lastSessionEncouragement;
+            
+            // Update personal record
+            document.getElementById('record-today').textContent = data.recordToday;
+            document.getElementById('record-percent').textContent = data.recordPercent;
+            document.getElementById('record-encouragement').textContent = data.recordEncouragement;
+        }
+
+        // Add click handlers to set cards on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.set-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove active from all
+                    document.querySelectorAll('.set-card').forEach(c => c.classList.remove('active'));
+                    // Add active to clicked
+                    this.classList.add('active');
+                    
+                    // Get set number from data attribute
+                    const setNumber = parseInt(this.getAttribute('data-set'));
+                    
+                    // Update right panel
+                    updateRightPanel(setNumber);
+                });
+            });
+        });
+
+        // Animate progress bars on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.progress-fill').forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
