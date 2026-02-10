@@ -1,0 +1,794 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>EGYM - Post-Set Success Screen</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 90%;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2ff4dd3f-32f0-8019-95d1-c2dd517d54d0" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://marketing.egym.com/wp-content/uploads/2025/03/Black-round-sticker-with-white-logo1.png"/></div><h1 class="page-title" dir="auto">EGYM - Post-Set Success Screen</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><nav id="2ff4dd3f-32f0-80cb-8231-cbaee633d4f5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-80dc-97d9-ff0c001c9cb4">The Smart Strength User Problem</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-805e-8ab8-e80070b05b1c">Understanding the Users</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-8002-8bc3-febee3e2caa8"><strong>Primary Persona: The Beginner User</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-8027-bd4d-de1c8df406dc"><strong>Secondary Persona: The Intermediate User</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-8087-86ea-c72eed010c95">The Prototyped Solution: Redesigned Success Screen</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-803e-affc-e69f42082703">Clickable Prototype</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-8002-a8e6-f867f31eedca">The Key Improvements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-8025-a538-ce14d8fe1d7f"><strong>Impact on User Experience</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-80ae-9f9d-dd0c92707ed1"><strong>Implementation Timeline</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-80a6-81ec-ef1fc6375cc9"><strong>Costs &amp; Scope</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3014dd3f-32f0-8001-bfc4-f93731d9eeeb">Business Cases &amp; ROI Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-8006-97d2-d0e88361c836"><strong>EGYM Business Model</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3024dd3f-32f0-8081-86e9-f685482f8b36">The Three Retentions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-8027-82d2-f647af17814e"><strong>How This Feature Drives Value</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-8023-818a-e307e0407120"><strong>How This Feature Drives Revenue</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-801b-a694-c39f15d253b6">Success Metrics &amp; Measurement Plan</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-804a-b708-f428e8288ff0">North Star Metric, Guardrails &amp; Kill Criteria</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3024dd3f-32f0-803d-bed9-fa251b4be38e"><strong>You Guardrail Metrics (Must NOT Degrade)</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3024dd3f-32f0-80ce-96e8-d9c9a7c8a7b0"><strong>Kill Criteria (Beta Phase - Weeks 4-5)</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-8058-9236-da081a2378ba">Primary &amp; Secondary Metrics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3014dd3f-32f0-80cc-8da0-dbae4cd01f79">Measurement Plan</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-8059-9a28-f36af4a0ecc5">Key Risks &amp; Validation Strategy</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-8089-9e2b-f57c3715c265">Next Steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-80a9-b159-eeb795fc2510">Appendix</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-8047-a145-d926d5912232"><strong>Tertiary Persona: The Trainer / Gym Staff</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-8067-970b-f5d71c0f8229"><strong>Competitive Analysis</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-80b6-a22c-e84f15190ea7"><strong>Design Principles</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ff4dd3f-32f0-809a-8100-c9d8ffbfff1b"><strong>Thinking beyond the Success Screen: Additional Solutions</strong></a></div></nav></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-802a-9452-fcb3dbce8574" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2ff4dd3f-32f0-801a-be57-defbd0cca426"/></div><div style="display:contents" dir="auto"><hr id="2ff4dd3f-32f0-809f-b0bc-d9db854fa668"/></div><div style="display:contents" dir="auto"><hr id="2ff4dd3f-32f0-8058-abf4-c01db8c29162"/></div><div style="display:contents" dir="auto"><h1 id="2ff4dd3f-32f0-80dc-97d9-ff0c001c9cb4" class="">The Smart Strength User Problem</h1></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80db-90ae-c3181a0753fd" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-806c-9c83-ebc7de5b174b" style="width:56.25%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8030-a07d-fb4136979633" class="toggle"><li><details open=""><summary><strong>Here&#x27;s what users currently see</strong></summary><div style="display:contents" dir="ltr"><figure id="3014dd3f-32f0-8041-971d-e2d879d0c63f" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/839ae5c6-f576-4687-94e3-987e0587292b.png"><img style="width:563.453237410072px" src="EGYM%20-%20Post-Set%20Success%20Screen/839ae5c6-f576-4687-94e3-987e0587292b.png"/></a></figure></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8022-87c2-fc6dc36d939f" style="width:43.75%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8005-9168-d99bdf981e5d" class="toggle"><li><details open=""><summary><strong>And here&#x27;s what they&#x27;re thinking</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8098-aa09-f0892844f9e0" class="bulleted-list"><li style="list-style-type:disc"><em>&quot;Is 600kg good for me?&quot; </em></li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80db-8ef2-ecbbf1abf401" class="bulleted-list"><li style="list-style-type:disc"><em>&quot;Why is my quality only 44%?&quot; </em></li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80f8-86de-facb5d2dc140" class="bulleted-list"><li style="list-style-type:disc"><em>&quot;What are activity points?&quot; </em></li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ab-be62-e68431c5b3d4" class="bulleted-list"><li style="list-style-type:disc"><em>&quot;Am I improving?&quot; </em></li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80e1-b78e-f97d8ba98031" class="bulleted-list"><li style="list-style-type:disc"><em>&quot;What should I do differently?&quot;</em></li></ul></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2ff4dd3f-32f0-80d0-989b-f9e7aac8c9f6"><div style="font-size:1.5em"><span class="icon">😢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80e5-bde8-cc5419d8c5b8" class=""><strong>The core issue with the Success Screen<br/></strong>EGYM machines capture rich, detailed performance data—including phase-specific execution quality—but <strong>the success screen reduces this to abstract metrics without context or actionable guidance</strong>. Users glance at the screen, feel vaguely confused, and move on. The machine misses its best teaching opportunity.</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-805b-934b-f8a6d05683b6" class="">
+</p></div></details></li></ul></div></div></div></div></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8035-8a5a-c2410ac04a79" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="3014dd3f-32f0-808e-b20a-e9b18264b627"/></div><div style="display:contents" dir="auto"><h1 id="2ff4dd3f-32f0-805e-8ab8-e80070b05b1c" class="">Understanding the Users</h1></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Primary Persona: The Beginner User</strong></summary><div class="indented"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8064-a9ca-cc1ecbff7eea" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8071-8784-d94d27e68c36" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-8045-affa-d0e8d885ff7c" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/image.png"><img style="width:586.9921875px" src="EGYM%20-%20Post-Set%20Success%20Screen/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8046-984b-e2ededc10141" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8023-9f97-fc577afd69a3" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-804f-acb8-e10983296ae3" class=""><strong>Workout Attitude: </strong></p></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8016-8cfe-f006e5e619b1" class="bulleted-list"><li style="list-style-type:disc">6 weeks into her gym membership → unsure what to do</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8066-88d9-c420f57bb8f5" class="bulleted-list"><li style="list-style-type:disc">wants &amp; needs guidance, but finds asking for help scary, </li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8079-aa86-ec4f04758979" class="bulleted-list"><li style="list-style-type:disc">finds cardio machines a bit bland, </li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-800b-902f-c70b6e005d56" class="bulleted-list"><li style="list-style-type:disc">finds the traditional weight machines &amp; free weights (&amp; the people who use them)  intimidating</li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8065-8329-c87eb2370ed8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80f6-81bb-cb002296acc1" class=""><strong>Why she matters:</strong><div class="indented"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8006-95c2-f51f15001dba" class="bulleted-list"><li style="list-style-type:disc">Beginners represent an estimated 60-70% of the Smart Strength machine user base</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-805b-9121-ccebe0bd4e94" class="bulleted-list"><li style="list-style-type:disc">Highest churn risk occurs in the first months</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-809a-ab15-c409d805701b" class="bulleted-list"><li style="list-style-type:disc">Successful beginners become loyal intermediate users who train 3-4x/week and drive referrals</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80d7-9134-ef70bcd40fa1" class="bulleted-list"><li style="list-style-type:disc">The difference between retention and churn often comes down to whether users feel competent and see progress</li></ul></div></div></p></div></div></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-805d-bc39-c16eb478d635" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8080-9d87-c1e3a7d744f0" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8071-84fa-d9098799da3b" class="toggle"><li><details open=""><summary><strong>Why she chose EGYM:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-809d-920f-e63d1a5655df" class="bulleted-list"><li style="list-style-type:disc">No decision paralysis about weight selection—the machine recommends it</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-808b-9d3e-d6cce22e45ea" class="bulleted-list"><li style="list-style-type:disc">Automatic setup saves her from fumbling with seat adjustments and pin placements</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ae-a21d-f1cfd672ec19" class="bulleted-list"><li style="list-style-type:disc">Real-time visual guidance (the curve) gives her something to follow</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80d3-a7fb-e5aeb92011a4" class="bulleted-list"><li style="list-style-type:disc">Less intimidating than the free weights area</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80fd-901c-e05030c15dd4" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-800d-b6b3-c6ffa72561f3" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80e2-bf99-fe1508514b53" class="toggle"><li><details open=""><summary><strong>Where the experience breaks down:</strong></summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80d6-a754-dabd4479c518" class="">She can&#x27;t interpret the success screen metrics. Is 44% training quality &quot;acceptable for a beginner&quot; or &quot;you&#x27;re doing something wrong&quot;? She has no frame of reference. Without understanding whether she&#x27;s improving or what to adjust, she&#x27;s less likely to return after the initial motivation fades.</p></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-805e-a96e-de328987ab28" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80bc-81f5-e683a2f7ac80" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ed-83ec-e4eb01d1461a" class="toggle"><li><details open=""><summary><strong>What would actually help:</strong></summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80d0-b79d-f24ab4b339a3" class="">Clear, specific feedback that says: <em>&quot;You&#x27;re rushing the lowering phase. Count to 3 on the way down. If that&#x27;s too difficult, reduce the weight by 2kg.&quot;</em></p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2ff4dd3f-32f0-806a-899e-cb67c8a774e4"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80f4-83d8-f824d66ab48e" class="">This is the kind of guidance a trainer would give, and the machines have the data to provide it automatically.</p></div></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80f7-97e8-c7de271bea20" class="">
+</p></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Secondary Persona: The Intermediate User</strong></summary><div class="indented"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80d4-9d32-c67d0c79d7e0" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8035-abd9-f1a2b55016a8" style="width:37.5%" class="column"><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-8062-87c8-d7f0808b264d" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/5296d6c9-593f-46d5-b810-f7ef31e87349.png"><img style="width:319.7034291010194px" src="EGYM%20-%20Post-Set%20Success%20Screen/5296d6c9-593f-46d5-b810-f7ef31e87349.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8074-88fe-d51d021549a6" style="width:62.5%" class="column"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-804c-b504-d3e586dd01ab" class=""><strong>Workout Attitude: </strong></p></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-800a-b3c7-fea3f4a9c555" class="bulleted-list"><li style="list-style-type:disc">has been training consistently for 8 months</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ff-ae7c-c207f06297a4" class="bulleted-list"><li style="list-style-type:disc">tech-savvy data enthusiast</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80aa-8907-cfe757332593" class="bulleted-list"><li style="list-style-type:disc">a bit competitive → wants to know how he compares to others</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8083-9d7f-ef4fd6a863a5" class="bulleted-list"><li style="list-style-type:disc">wants to improve his form</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8025-a83c-e50d066c7adc" class="bulleted-list"><li style="list-style-type:disc">wants to experiment to challenge himself</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-805f-ba66-e43d9f5a819b" class="bulleted-list"><li style="list-style-type:disc">doesn’t want the faff of having to adjust the traditional machines and have to remember what his previous weights were</li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80c6-a27d-c65fa716724d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80c0-91b9-e1ccf25485ba" class=""><strong>Why he matters:</strong><div class="indented"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80bf-8dc0-eb8b45a77cfa" class="bulleted-list"><li style="list-style-type:disc">Intermediates are lower churn risk but drive word-of-mouth growth</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8050-9a9b-fd859a077d69" class="bulleted-list"><li style="list-style-type:disc">They provide valuable feedback on data accuracy and feature requests</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ba-8d33-d21c53ad6643" class="bulleted-list"><li style="list-style-type:disc">They eventually become the &quot;regulars&quot; who create gym community</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80bc-98f8-e0b862a678f7" class="bulleted-list"><li style="list-style-type:disc">Losing them signals product isn&#x27;t growing with users</li></ul></div></div></p></div></div></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-805d-ae7b-f5077712f0b3" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80ef-b643-ce748e69f2dc" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8053-822d-eea882bcdfd0" class="toggle"><li><details open=""><summary><strong>Why he chose EGYM:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80f4-9d3d-f50fc68b2a47" class="bulleted-list"><li style="list-style-type:disc">Automatic tracking eliminates manual logging burden</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8084-af94-cb609188ea0a" class="bulleted-list"><li style="list-style-type:disc">Negative training mode enables eccentric overload not possible with traditional equipment</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80a0-a3fc-cf887e626d12" class="bulleted-list"><li style="list-style-type:disc">Objective performance metrics feed his analytical mindset</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80f2-9c59-dda1d9aca8b9" class="bulleted-list"><li style="list-style-type:disc">Time efficiency—no equipment adjustment between sets</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80c8-8f90-e4e65bae8a62" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80fc-83c0-f27b973db42e" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80df-993b-fda6aaa88147" class="toggle"><li><details open=""><summary><strong>Current frustrations:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8088-91a4-ddac2dabdeb7" class="bulleted-list"><li style="list-style-type:disc">Success screen doesn&#x27;t show enough detail—he wants phase-specific breakdowns</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80fd-9c6c-e69802bdf2a7" class="bulleted-list"><li style="list-style-type:disc">Can&#x27;t easily see progress over time without switching to the app</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ab-8c8e-d8b160712a06" class="bulleted-list"><li style="list-style-type:disc">No way to compare his performance against others or know if he&#x27;s &quot;good&quot; for his level</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-806c-9291-f2d8d32befc8" class="bulleted-list"><li style="list-style-type:disc">Program recommendations feel one-size-fits-all</li></ul></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-800b-a593-df9ffa8baba6" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80f0-b32e-d5ee61710053" class="toggle"><li><details open=""><summary><strong>What he needs:</strong><br/>Access to the granular data EGYM already captures. He <em>wants</em> to see &quot;87% concentric, 41% eccentric&quot;—that level of detail is valuable to him, not overwhelming. He&#x27;d also appreciate peer comparison (genuinely curious where he ranks) and historical trend data.</summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8038-b714-c8d608910ebe" class="">
+</p></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8062-859e-f5ff8d890531" class="">
+</p></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8054-b429-e066395cd2ab" class="">
+</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3014dd3f-32f0-80e0-ae9a-d6101b04c95b"><div style="font-size:1.5em"><span class="icon">👤</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80ff-a9b8-ede7d7e390b6" class="">There’s technically a 3rd User - the trainer / gym staff - but for the sake of this Case Study, they’re not in scope.</p></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80cb-abfa-c798689a4e52" class=""><em>Find out more about them in the Appendix</em></p></div></div></figure></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8095-a5e2-c07eef257a4a" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="3014dd3f-32f0-8033-b8eb-dd24592ba0d8"/></div><div style="display:contents" dir="auto"><h1 id="2ff4dd3f-32f0-8087-86ea-c72eed010c95" class="">The Prototyped Solution: Redesigned Success Screen</h1></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Clickable Prototype</summary><div class="indented"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80e5-bf0a-f591482f8b74" class="">I <em><strong>prototyped a new success screen</strong></em> that transforms raw metrics into actionable coaching. </p></div><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-8060-8d5d-dd7345b16624"><div class="source"><a href="https://herchenmx.github.io/egym/">https://herchenmx.github.io/egym/</a></div><figcaption>Prototype built with Claude </figcaption></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2ff4dd3f-32f0-80e7-b528-f958a3b05ad7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8031-aac1-fa1e03680c30" class="">I focused on the success screen because</p></div><div style="display:contents" dir="auto"><ol type="1" id="2ff4dd3f-32f0-80f2-b703-f8596a59e161" class="numbered-list" start="1"><li>EGYM already captures the necessary data</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2ff4dd3f-32f0-80b2-abb8-e01a8b4a4cd3" class="numbered-list" start="2"><li>Every single set ends here—maximum reach</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2ff4dd3f-32f0-80d7-b29a-d6c18f7ac28f" class="numbered-list" start="3"><li>It validates the concept before tackling more complex features like real-time correction</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2ff4dd3f-32f0-803b-9ac6-ed6ab929d637" class="numbered-list" start="4"><li>Lowest implementation complexity relative to impact</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2ff4dd3f-32f0-80a8-9a3a-e9076b324862" class="numbered-list" start="5"><li>Solution can be reused for trainer and end-user apps</li></ol></div></div></figure></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-806e-94d3-ff2fa5a32c24" class="">
+</p></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">The Key Improvements</summary><div class="indented"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80cf-97a3-ea391870be38" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8012-9e74-f4ad15a19b89" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8066-a1e9-fdacea02f23f" class="toggle"><li><details open=""><summary><strong>#1: Phase-Specific Performance Breakdown</strong></summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8050-9a64-c0e4709205f0" class="">Instead of showing only aggregate &quot;training quality,&quot; separate concentric (lifting) and eccentric (lowering) phases:</p></div><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-8099-aca1-f2848d7fb1a8" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/image%201.png"><img style="width:357.3203125px" src="EGYM%20-%20Post-Set%20Success%20Screen/image%201.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2ff4dd3f-32f0-805d-ad2d-d2d224e7d3cf"><div style="font-size:1.5em"><span class="icon">🤩</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80f1-8446-fe305f1b1604" class="">Users can now identify <em>which</em> part of their movement needs work. Sarah sees that her lifting phase is excellent but she&#x27;s rushing the lowering phase—actionable insight instead of abstract percentage.</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8034-a147-c25d5e4b7f4c" class="">
+</p></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80e0-bce4-d37257ac194a" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80fb-9c7c-ea979a82512a" class="toggle"><li><details open=""><summary><strong>#2: Structured Coaching Feedback</strong></summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-800d-aa76-e3cac8729b27" class="">Break down feedback into observation, action, and tip:</p></div><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-8037-9ac2-c5a971bb0a13" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/image%202.png"><img style="width:357.3203125px" src="EGYM%20-%20Post-Set%20Success%20Screen/image%202.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2ff4dd3f-32f0-8034-b5f5-ebe957beb7fc"><div style="font-size:1.5em"><span class="icon">🤩</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8046-ab03-df64d9920179" class="">Mimics what a good trainer would say. Clear, specific, and immediately actionable.</p></div></div></figure></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80f4-80f2-cb59725378d7" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8056-80b4-cda0bdb1cc26" class="toggle"><li><details open=""><summary><strong>#3: Contextual Comparisons </strong></summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80a8-95e3-c84107019800" class="">Provide context through collapsible sections that users can explore when interested:</p></div><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-80f6-b7da-ccecad2b8159" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/image%203.png"><img style="width:357.3203125px" src="EGYM%20-%20Post-Set%20Success%20Screen/image%203.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8099-a33b-d2ea8e571291" class="">For peer comparison, frame positively to avoid demotivation:</p></div><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-801e-9cb4-dad593d0b5c1" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/image%204.png"><img style="width:357.3203125px" src="EGYM%20-%20Post-Set%20Success%20Screen/image%204.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2ff4dd3f-32f0-8001-972f-e53e23fe9270"><div style="font-size:1.5em"><span class="icon">🤩</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-803a-b2f5-e50d046d3627" class="">Users get context when they want it without information overload. The default view keeps things simple; curious users can dig deeper.</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80df-b234-caacd71603cc" class="">
+</p></div></details></li></ul></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Impact on User Experience</strong></summary><div class="indented"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3014dd3f-32f0-8029-9f48-dd439a6dd27e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80ac-8ac9-d07e02967b40" class="">While specific percentage improvements would require A/B testing, similar coaching-focused interfaces (Tonal, Peloton) have demonstrated that contextual feedback significantly impacts user retention and engagement.</p></div></div></figure></div><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-80d8-bdb8-cd7111c0f124" class="column-list"><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-8026-849a-f813e268dc8a" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80fe-9a0a-c51908e7e8d1" class="toggle"><li><details open=""><summary><strong>Immediate improvements:</strong></summary><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8044-8089-d2b0f5252bb7" class="bulleted-list"><li style="list-style-type:disc"><strong>User comprehension:</strong> Users can articulate what they need to improve and why</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-803b-91cf-f246774ea496" class="bulleted-list"><li style="list-style-type:disc"><strong>Engagement:</strong> Increased time spent reviewing results (currently ~6 seconds)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8046-98ad-ff8fbc65dce6" class="bulleted-list"><li style="list-style-type:disc"><strong>Form quality:</strong> Measurable improvement in  phase execution over 4-6 weeks</li></ul></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-807d-a135-dd82b70f4035" class="">
+</p></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-804d-b297-ed6a0e7d82d6" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-800b-90af-f1daeadb4a27" class="toggle"><li><details open=""><summary><strong>Medium-term outcomes:</strong></summary><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80ba-80a7-d0f6a1f3cfe2" class="bulleted-list"><li style="list-style-type:disc"><strong>Retention:</strong> Reduction in churn during the critical months 2-4 period</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8080-8c64-f781eb76cd05" class="bulleted-list"><li style="list-style-type:disc"><strong>Workout frequency:</strong> Increased sessions per month as users gain confidence</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8077-90aa-f4076f486589" class="bulleted-list"><li style="list-style-type:disc"><strong>Trainer efficiency:</strong> Fewer &quot;is this normal?&quot; questions as machines provide baseline education</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8085-9d6b-fb9ff80a438c" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-8065-8c0a-de19af46a39c" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8021-90d0-d8984efa2e69" class="toggle"><li><details open=""><summary><strong>Long-term value:</strong></summary><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-805b-aefe-e1455ff04b61" class="bulleted-list"><li style="list-style-type:disc">Beginners who understand their progress become intermediate users who train consistently</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-807e-864d-e78fef1cf2c9" class="bulleted-list"><li style="list-style-type:disc">Word-of-mouth referrals from confident, successful users</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-809b-af33-f922cd01ca4f" class="bulleted-list"><li style="list-style-type:disc">Competitive differentiation in an increasingly crowded smart equipment market</li></ul></div></details></li></ul></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Implementation Timeline</strong></summary><div class="indented"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-802e-a1c1-e459adf9eb0d" class="toggle"><li><details open=""><summary><strong>Key Assumptions impacting the Timeline</strong></summary><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80a4-8e9f-d70446e0d31d" class="column-list"><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-8027-8994-c7e9ca80dd9e" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80a8-8f94-c83ba9f51192" class=""><strong>Data infrastructure already exists:</strong></p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-806d-ac60-c64a4e4e6dbb" class="bulleted-list"><li style="list-style-type:disc">Last session comparison queries already power current UI</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-805c-b4e7-d436713f78d5" class="bulleted-list"><li style="list-style-type:disc">Personal record tracking exists (machine remembers previous weights and max reps)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80de-bfec-e5b22bd540b4" class="bulleted-list"><li style="list-style-type:disc">Session history data retained for 6+ months</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-804d-9425-feb529a1b481" class="bulleted-list"><li style="list-style-type:disc">Only net-new backend work: peer comparison cohorts and coaching tip logic</li></ul></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-808d-9b1c-e683690b85cf" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-801e-8cea-d19a684923d6" class=""><strong>Frontend development accelerators:</strong></p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8024-9888-e2bb2c47550e" class="bulleted-list"><li style="list-style-type:disc">EGYM has established design system (not building components from scratch)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80a8-aad1-fad2c055aa26" class="bulleted-list"><li style="list-style-type:disc">Figma-to-code tools (Figma Make, Locofy) reduce implementation time</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-803d-8d2e-e8b36d56b05a" class="bulleted-list"><li style="list-style-type:disc">AI-assisted development for component wiring and logic</li></ul></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80ff-af60-fbbf23c8d99c" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80ff-98b8-dbd3ab60eeb2" class=""><strong>Team familiarity:</strong></p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80b7-9a1e-c9ad53c50eee" class="bulleted-list"><li style="list-style-type:disc">Engineers already know EGYM codebase</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8061-a309-d4727ce120fa" class="bulleted-list"><li style="list-style-type:disc">No architectural changes needed</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8029-ae37-c2b2cd311ee0" class="bulleted-list"><li style="list-style-type:disc">Adapting existing queries, not building new data pipeline</li></ul></div></div></div></div></div></details></li></ul></div><div style="display:contents" dir="ltr"><table id="3034dd3f-32f0-804d-a47a-edf8b2c4d3f6" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3034dd3f-32f0-8088-b7ea-e3a1d914aadd"><th id="hkkX" class="simple-table-header-color simple-table-header" style="width:358.75px"><strong>Phase 1: Research &amp; Validation (1 week)</strong></th><th id="`uzS" class="simple-table-header-color simple-table-header" style="width:358.75px"><strong>Phase 2: Development (2 weeks)</strong></th><th id="HpTg" class="simple-table-header-color simple-table-header" style="width:358.75px"><strong>Phase 3: Beta &amp; Monitoring (1-2 weeks)</strong></th><th id="IVkU" class="simple-table-header-color simple-table-header" style="width:358.75px">P<strong>hase 4: Gradual Rollout (1 week initial)</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3034dd3f-32f0-806c-809b-d9f9b671f98c"><td id="hkkX" class="" style="width:358.75px"><span style="border-bottom:0.05em solid">Week 1:</span><br/>  • Days 1-3: User testing with interactive prototype<br/>  • Days 4-5: Synthesis and refinement<br/>  • Parallel: Technical validation with EGYM backend team (confirm data availability)</td><td id="`uzS" class="" style="width:358.75px"><span style="border-bottom:0.05em solid">Week 2: Core Development</span><br/>→ <em>Backend (2-3 days):<br/>  • </em>Adapt existing queries<br/>  • New queries &amp; endpoints for Peer comparison cohort calculation &amp; Coaching tip selection logic<br/>→ <em>Frontend (3-4 days)</em><br/>  • Success screen layout with accordion sections<br/>  • Phase performance visualization (progress bars)<br/>  • Clickable set selection with right panel updates<br/>  • Wire up new backend endpoints<br/>  • Tooltip/info icon system<br/>→ <em>Parallel:<br/>  • </em>Designer finalizes assets and edge cases<br/>  • QA prepares test plan<br/><br/><span style="border-bottom:0.05em solid">Week 3: Integration &amp; Testing</span><br/>  • Days 1-2: Integration testing<br/>  • Days 3-4: Hardware testing on EGYM machines<br/>  • Day 5: Bug fixes and final QA</td><td id="HpTg" class="" style="width:358.75px"><span style="border-bottom:0.05em solid">Week 4: Beta Deployment</span><br/>  • Day 1: Deploy to 2 beta gyms (circuit mode focused)<br/>  • Days 2-5: Active monitoring<br/><br/><span style="border-bottom:0.05em solid">Week 5 (optional extension): Continued monitoring</span><br/>  • If beta reveals issues needing iteration<br/>  • Additional user interviews if needed<br/>  • Otherwise, proceed to rollout</td><td id="IVkU" class="" style="width:358.75px"><span style="border-bottom:0.05em solid">Week 5-6: Initial Rollout</span><br/>  • Deploy to 25% of gyms (prioritise circuit-mode heavy locations)<br/>  • Communication rollout: member notifications, trainer briefings<br/>  • Support team training and FAQ distribution<br/>  • Real-time monitoring for issues<br/><br/><span style="border-bottom:0.05em solid">Weeks 7-10 (post-project): Full deployment<br/></span>  • 25% → 50% → 75% → 100%<br/>  • Ongoing monitoring and iteration</td></tr></div><div style="display:contents" dir="ltr"><tr id="3034dd3f-32f0-80d1-8ad2-dd906e141408"><td id="hkkX" class="" style="width:358.75px"><strong>→ Deliverable: Validated design + confirmed technical approach</strong></td><td id="`uzS" class="" style="width:358.75px"><strong>→ Deliverable: Production-ready build tested on hardware</strong></td><td id="HpTg" class="" style="width:358.75px"><strong>→ Deliverable: Beta validation report with go/no-go recommendation</strong></td><td id="IVkU" class="" style="width:358.75px"><strong> → Deliverable: Feature in Production</strong></td></tr></div></tbody></table></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Costs &amp; Scope</strong></summary><div class="indented"><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-80b4-a891-dda10071d06c" class="column-list"><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-807f-9205-caa56c01f475" style="width:50%" class="column"><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8061-bf9c-fd7a0df88e90" class=""><strong>Total: ~€30-40K — Breakdown:</strong></p></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8036-b057-ed5302cfe22e" class="bulleted-list"><li style="list-style-type:disc">Research: €3K (1 FTE × 1 week)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80c7-9b70-fea6cb924270" class="bulleted-list"><li style="list-style-type:disc">Design: €3K (0.5 FTE × 2 weeks)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80a0-a9a1-fe889a092139" class="bulleted-list"><li style="list-style-type:disc">Backend Engineering: €4.2K (0.6 FTE × 2 weeks × €3.5K/week)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8000-a371-f01af1fee4e4" class="bulleted-list"><li style="list-style-type:disc">Frontend Engineering: €7K (1 FTE × 2 weeks × €3.5K/week)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8026-90c5-da727b3ada58" class="bulleted-list"><li style="list-style-type:disc">Infrastructure &amp; testing: €3K</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8082-9d20-e14e6c465866" class="bulleted-list"><li style="list-style-type:disc">PM: €6.3K (5-6 weeks part-time)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-806f-9b0d-fccf3ecf689e" class="bulleted-list"><li style="list-style-type:disc">Buffer: €10K for delays</li></ul></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8035-bb95-ea3ef16a42c6" class="">
+</p></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8025-beb1-dcd2deb142a2" class=""><strong>Out of scope for initial release:</strong></p></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80fc-a2d6-d3c0a8f249c4" class="bulleted-list"><li style="list-style-type:disc">Member app updates (future phase, can reuse backend work)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8097-adc1-d703e8e566cc" class="bulleted-list"><li style="list-style-type:disc">Trainer app dashboard (future phase)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8077-b196-ef4deebc60e8" class="bulleted-list"><li style="list-style-type:disc">Real-time form correction during sets (different project entirely)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-800a-8409-edd1a00b4655" class="bulleted-list"><li style="list-style-type:disc">Video playback features (requires new data capture)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8051-befb-c64f4be863a0" class="bulleted-list"><li style="list-style-type:disc">ML-driven personalized coaching (future iteration)</li></ul></div></div></div><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-8078-bb1d-ed8a9a58f793" style="width:49.99999999999999%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3014dd3f-32f0-803b-a75d-c439202e581a"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-807d-b7ad-d0f2ab034116" class=""><strong>Key Assumptions</strong></p></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8035-a572-d2a23badbc03" class="bulleted-list"><li style="list-style-type:disc">Queries for last session and personal records already exist in codebase</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80dd-b70e-e5709657bd76" class="bulleted-list"><li style="list-style-type:disc">Phase-specific data (concentric/eccentric quality) already captured</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8048-9b29-eb71d18396af" class="bulleted-list"><li style="list-style-type:disc">No machine firmware updates needed</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8012-bbc1-fc8d7ddcfa63" class="bulleted-list"><li style="list-style-type:disc">Design system has required components</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-807c-903e-d84e9a6570a8" class="bulleted-list"><li style="list-style-type:disc">Figma-to-code tools + design system reduce frontend time by 40%</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-804e-954c-da7a14b73c93" class="bulleted-list"><li style="list-style-type:disc">AI-assisted development for boilerplate and component wiring</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-800d-9854-e97dff95ddfe" class="bulleted-list"><li style="list-style-type:disc">Existing data infrastructure means no new pipeline construction</li></ul></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3014dd3f-32f0-804d-a327-d9d037809af9"><div style="font-size:1.5em"><span class="icon">👥</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-801f-8a55-ca5015386dd0" class=""><strong>Team Composition</strong></p></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80b9-a280-e1ab25d480e6" class="bulleted-list"><li style="list-style-type:disc">1 Backend Engineer (60% allocation, weeks 2-3)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-807e-9cc7-ef83ba2ba46d" class="bulleted-list"><li style="list-style-type:disc">1 Frontend Engineer (full-time, weeks 2-3)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8075-a922-cf5e5b1fcecb" class="bulleted-list"><li style="list-style-type:disc">1 Product Designer (50% allocation, weeks 1-2)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80de-9b5b-c31bf2c86e82" class="bulleted-list"><li style="list-style-type:disc">1 User Researcher (week 1 only)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80e6-b77d-e347d159c3cd" class="bulleted-list"><li style="list-style-type:disc">1 Product Manager (orchestrating across all phases)</li></ul></div></div></figure></div></div></div></div></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8047-98d8-db726b6d7f7f" class="">
+</p></div></div></details></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-808e-ab61-f11e9bf9ffca" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="3014dd3f-32f0-80a2-84f0-d8759ef6762e"/></div><div style="display:contents" dir="auto"><h1 id="3014dd3f-32f0-8001-bfc4-f93731d9eeeb" class="">Business Cases &amp; ROI Analysis</h1></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>EGYM Business Model</strong></summary><div class="indented"><div style="display:contents" dir="ltr"><table id="3014dd3f-32f0-805a-b2a0-e447e46bc6e9" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3014dd3f-32f0-80e2-a541-ca5f9def9f51"><th id="EX]G" class="simple-table-header-color simple-table-header" style="width:717.5px"><strong>EGYM Gymtech (B2B - Primary Revenue Source)</strong></th><th id="mByP" class="simple-table-header-color simple-table-header" style="width:717.5px"><strong>EGYM Wellpass (B2B2C - Network Operator)</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3014dd3f-32f0-80f6-92f4-c89fdadabae9"><td id="EX]G" class="" style="width:717.5px">• Smart equipment sales/leasing to gyms<br/>• Ongoing software subscriptions for machine platform<br/>• Trainer management tools and operator portal</td><td id="mByP" class="" style="width:717.5px">• Corporate wellness platform connecting employees to gyms part of the network<br/>• Revenue model: Employers pay subscription → EGYM pays gyms per check-in<br/>• EGYM keeps the margin</td></tr></div></tbody></table></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">The Three Retentions</summary><div class="indented"><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-8051-bd84-cd74d4c07421" class="column-list"><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-8060-8de5-d39bf2288826" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8046-a6c8-f30a2634b7eb" class="toggle"><li><details open=""><summary><strong>EGYM Machine User Retention</strong></summary><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8032-89a9-f8776f5aecee" class="bulleted-list"><li style="list-style-type:disc"><strong>What it is:</strong> Sarah keeps using EGYM machines (not other equipment in the gym)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80cb-a132-ca55eebc9b91" class="bulleted-list"><li style="list-style-type:disc"><strong>How to measure:</strong><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8065-94df-dffb8ab57d95" class="bulleted-list"><li style="list-style-type:circle">Sessions per month on EGYM equipment</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8054-b9c0-c79cec2dc295" class="bulleted-list"><li style="list-style-type:circle">% of gym visits where Sarah uses EGYM machines</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8016-b3be-c5574d78a646" class="bulleted-list"><li style="list-style-type:circle">Drop-off rate (users who stop using machines but still go to gym)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8092-ba90-ee1bca5056c3" class="bulleted-list"><li style="list-style-type:disc"><strong>Example:</strong> Sarah goes to gym 3x/week but only uses EGYM machines 1x/week (33% retention of her gym visits)</li></ul></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80d2-9e3d-df8285f55fc0" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-808e-80af-d77319e410eb" class="toggle"><li><details open=""><summary><strong>Gym Member Retention</strong></summary><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8023-b1ff-f8cfd9b1809f" class="bulleted-list"><li style="list-style-type:disc"><strong>What it is:</strong> Sarah keeps her gym membership (doesn&#x27;t cancel)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80f3-bd0c-d9108b86c011" class="bulleted-list"><li style="list-style-type:disc"><strong>How to measure:</strong><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-808c-adc0-f4132c95dcfc" class="bulleted-list"><li style="list-style-type:circle">Gym&#x27;s overall member churn rate</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8073-8074-f34696f92f3f" class="bulleted-list"><li style="list-style-type:circle">Membership renewal rate after contract expires</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-802e-a5bf-c41bfa89ff78" class="bulleted-list"><li style="list-style-type:disc"><strong>Example:</strong> Sarah&#x27;s 12-month contract expires, she renews for another year</li></ul></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80c0-9c34-fdaa8efd2c22" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-809b-825f-c2313805463e" class="toggle"><li><details open=""><summary><strong>Gym Operator Retention (EGYM Customer Retention)</strong></summary><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8048-82ab-c418992c468d" class="bulleted-list"><li style="list-style-type:disc"><strong>What it is:</strong> The gym keeps its EGYM contract (doesn&#x27;t switch to Matrix/Technogym)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8027-9f36-c379f301699b" class="bulleted-list"><li style="list-style-type:disc"><strong>How to measure:</strong><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-802c-8dfc-f6c6ca33abcf" class="bulleted-list"><li style="list-style-type:circle">EGYM&#x27;s B2B customer churn rate</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8000-8c7d-f8cf54afb21d" class="bulleted-list"><li style="list-style-type:circle">Contract renewal rate at end of term (3-year, 5-year)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8016-9706-ef6fe81e1060" class="bulleted-list"><li style="list-style-type:disc"><strong>Example:</strong> Gym&#x27;s EGYM contract expires after 3 years, they renew instead of buying Matrix equipment</li></ul></div></details></li></ul></div></div></div></div></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80ca-8462-cd246ef39924" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80fa-affc-ce22325ed0ae" class="toggle"><li><details open=""><summary><strong>Retention Flywheel Breakdown</strong></summary><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-808c-bf70-d03316942f87" class="column-list"><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-8062-ac97-c59189d76c05" style="width:45.83333333333333%" class="column"><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3024dd3f-32f0-80d7-a3d2-f6b3f9aeb6e4" class="code code-wrap"><code class="language-Markdown" style="white-space:pre-wrap;word-break:break-all">Better Success Screen
+        ↓
+#1: EGYM Machine User Retention ↑
+(Sarah uses machines 2x/week instead of 1x/week)
+        ↓
+Gym notices: &quot;Members love EGYM equipment&quot;
+        ↓
+#2: Gym Member Retention ↑ (maybe, indirectly)
+(Sarah renews membership partly because she likes EGYM)
+        ↓
+Gym sees ROI on EGYM investment
+        ↓
+#3: Gym Operator Retention ↑
+(Gym renews EGYM contract)
+        ↓
+EGYM makes money</code></pre></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-8088-ae1e-cd0560c3c7bb" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-8036-80c4-e1ce95294106" style="width:4.166666666666666%" class="column"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80c4-999c-e6c66053dd0b" class="">→ <br/>→ <br/>→</p></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80b9-844a-e024f7e2768b" class="">→ <br/>→ <br/>→</p></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-808c-bd38-caf8131f7a8a" class="">→ <br/>→ <br/>→</p></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-8013-8789-f3f42b2f7cf3" class="">→ <br/>→ <br/>→</p></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-804a-8b8f-fa85f0fb39eb" class="">→ <br/>→ <br/>→</p></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80cf-a43c-d8e959eb8eb3" style="width:49.99999999999999%" class="column"><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3024dd3f-32f0-80fc-93e5-c76fd7013a10" class="code code-wrap"><code class="language-Markdown" style="white-space:pre-wrap;word-break:break-all">Better Success Screen (Week 0)
+        ↓
+Users understand their performance better (Week 2-4)
+    ✓ Measurable: Comprehension surveys
+        ↓
+Users improve form quality (Week 4-8)
+    ✓ Measurable: Phase performance data
+        ↓
+Users feel more confident and motivated (Week 8-12)
+    ✓ Measurable: NPS, usage frequency
+        ↓
+Users choose EGYM machines more often (Month 3-6)
+    ✓ Measurable: Sessions/month, % of gym visits using EGYM
+        ↓
+Gym operators notice high utilization (Month 6-12)
+    ⚠️ Harder to measure: Need gym operator interviews
+        ↓
+Gym operators see ROI on equipment (Year 1-2)
+    ⚠️ Very hard to measure: Many confounding factors
+        ↓
+Gym operators renew EGYM contracts (Year 3-5)
+    ❌ Cannot measure in reasonable timeframe
+    ❌ Cannot attribute to single feature</code></pre></div></div></div></div></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3024dd3f-32f0-80f3-83a1-c9d8136ee9d9"><div style="font-size:1.5em"><span class="icon">😢</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-8066-b9b1-d0c25abcf0b4" class="">EGYM’s key strategic goal - <strong>gym operator retention</strong> - is too far removed to track, because <strong>there are too many steps.</strong></p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-803e-9937-c30841f8a55a" class="bulleted-list"><li style="list-style-type:disc"><em>You can measure #1 (machine usage) directly and quickly (weeks/months)</em></li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80c1-a22f-e6462882740d" class="bulleted-list"><li style="list-style-type:disc"><em>You can maybe measure #2 (gym member retention) if gym shares data (months/year)</em></li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8075-9b1f-d11b4e047c9a" class="bulleted-list"><li style="list-style-type:disc"><em>You can&#x27;t measure #3 (gym operator retention) for YEARS (until contracts come up for renewal)</em></li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8002-97d4-c863f3575161" class="bulleted-list"><li style="list-style-type:disc"><em>And the causal link is weak at each step:</em><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8048-9e10-f00ed3df4214" class="bulleted-list"><li style="list-style-type:circle">Better success screen → more machine usage? (Maybe 10-20% effect)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8090-9bb0-e21d86dba3c8" class="bulleted-list"><li style="list-style-type:circle">More machine usage → gym member retention? (One of many factors)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8061-ad29-e0d132357e7f" class="bulleted-list"><li style="list-style-type:circle">Gym member retention → gym operator renewal? (One of many factors)</li></ul></div></li></ul></div></div></figure></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-8051-a14e-c6f22675bb6d" class="">
+</p></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>How This Feature Drives Value</strong></summary><div class="indented"><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-8026-a1f1-ccd2f3dec180" class="column-list"><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-80d8-90f5-c8788a7f124f" style="width:62.5%" class="column"><div style="display:contents" dir="ltr"><table id="3014dd3f-32f0-80c4-b076-eb6054238528" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3014dd3f-32f0-8085-b619-ec80c94059f1"><th id="OIU?" class="simple-table-header-color simple-table-header" style="width:429.5px"><strong>Direct Impact: Smart Strength Machine User Experience</strong></th><th id="_=Rv" class="simple-table-header-color simple-table-header" style="width:429.5px"><strong>Strategic Impact: EGYM&#x27;s Positioning</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3014dd3f-32f0-8022-8afa-faf1cc0a45dc"><td id="OIU?" class="" style="width:429.5px">This feature addresses a fundamental UX problem: members finish sets confused about their performance. By transforming abstract metrics into actionable coaching, we improve the core EGYM experience at a critical moment—the post-set reflection window.<br/><br/>  • Higher comprehension of performance metrics (user surveys)<br/>  • Improved phase execution (performance data)<br/>  • Increased section expansion rates (engagement tracking)</td><td id="_=Rv" class="" style="width:429.5px">This feature supports EGYM&#x27;s evolution from equipment provider to coaching platform:<br/><br/>  • <strong>Competitive Differentiation:</strong> Phase-specific coaching leverages data competitors cannot capture<br/>  • <strong>Sales Enablement:</strong> Concrete demo moment showing unique capabilities vs. Matrix/Technogym<br/>  • <strong>Member Satisfaction:</strong> Better experience supports gym operators&#x27; member retention goals<br/>  • <strong>Platform Foundation:</strong> Validates coaching approach before investing in more complex features</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80cc-8e96-fdd2e348c4d7" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-8095-b903-c170c87205ba" style="width:37.50000000000001%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3014dd3f-32f0-8065-8854-e02ad7e52a52"><div style="font-size:1.5em"><span class="icon">💹</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8004-846a-fcdf68321f3c" class=""><strong>Why ROI is Difficult to Calculate</strong></p></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8056-a38a-c7decc47384e" class="">The value chain has multiple steps and confounding factors:</p></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-805e-8e6d-c1ac436dd3e8" class="bulleted-list"><li style="list-style-type:disc">Better success screen → improved member experience → potentially higher equipment usage → potentially better member retention at gym → potentially influences gym renewal decisions (among many other factors)</li></ul></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80e5-827c-dafb3c3f005d" class="">Without knowing EGYM&#x27;s specific contract structures (purchase vs. lease, contract length, actual churn rates), precise revenue attribution is speculative. The strategic value is clear; the financial impact requires EGYM&#x27;s internal data to model accurately.</p></div></div></figure></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>How This Feature Drives Revenue</strong></summary><div class="indented"><div style="display:contents" dir="ltr"><table id="3014dd3f-32f0-802b-9f82-c4aadb4d452a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3014dd3f-32f0-8001-8665-eb7dd2ab878d"><th id="kIZX" class="simple-table-header-color simple-table-header" style="width:717.5px"><strong>Primary Impact: Gymtech Contract Value</strong></th><th id="tAw`" class="simple-table-header-color simple-table-header" style="width:717.5px"><strong>Secondary Impact</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3014dd3f-32f0-807e-8a68-d13620cdbb60"><td id="kIZX" class="" style="width:717.5px">Gyms investing in EGYM equipment need to see ROI. <br/>Better gym-member retention directly impacts:<br/>• <strong>Contract renewals:</strong> Gyms keep EGYM instead of switching to competitors<br/>• <strong>Expansion revenue:</strong> Satisfied gyms buy additional machines<br/><br/>Phase-specific coaching becomes a sales enablement tool:<br/>• Unique capability competitors don&#x27;t have (Matrix, Technogym, Life Fitness)<br/>• Demonstrates EGYM&#x27;s evolution from equipment to coaching platform<br/>• Provides concrete demo moment in sales presentations</td><td id="tAw`" class="" style="width:717.5px"><strong>Wellpass Network Effects:</strong><br/>Better gym experience improves Wellpass value proposition:<br/>• <strong>Corporate retention:</strong> Higher employee utilization proves wellness program ROI<br/><br/></td></tr></div></tbody></table></div></div></details></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80d9-8664-da2880c284ce" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="3014dd3f-32f0-801b-8bd4-dd59f3248cc7"/></div><div style="display:contents" dir="auto"><h1 id="2ff4dd3f-32f0-801b-a694-c39f15d253b6" class="">Success Metrics &amp; Measurement Plan</h1></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">North Star Metric, Guardrails &amp; Kill Criteria</summary><div class="indented"><div style="display:contents" dir="auto"><div id="3034dd3f-32f0-80c0-9410-e2ffbfff7d04" class="column-list"><div style="display:contents" dir="auto"><div id="3034dd3f-32f0-809f-99a7-c148708b8f5d" style="width:37.5%" class="column"><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-808c-a249-da335c1f8661" class=""><strong>EGYM Machine User Retention (Beginner Cohort)</strong></p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80ab-920d-cc218d19ea1f" class="bulleted-list"><li style="list-style-type:disc"><em>Definition:</em> % of beginners who used EGYM machines in Month 1 and are still using them in Month 3</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8060-aea9-edbc1053902c" class="bulleted-list"><li style="list-style-type:disc"><em>Current baseline:</em> Unknown - requires EGYM data (industry standard: ~60-70% of gym beginners drop off by month 3)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8093-8606-f16e87595b69" class="bulleted-list"><li style="list-style-type:disc"><em>Target:</em> 70-75% retention rate for beginners in beta cohort vs. 60-65% in control group (~10 percentage point improvement)</li></ul></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-8024-8667-eb6a3404915f" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="3034dd3f-32f0-80bb-ac4e-fb3fa343a366" style="width:62.5%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3024dd3f-32f0-80b8-933f-d3a2b5658356"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80f5-88d4-fe6623e20cfe" class=""><em>Why this metric:</em></p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8074-b89b-e6d0b6fcfdc9" class="bulleted-list"><li style="list-style-type:disc">Directly measurable within weeks</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-801d-a7ae-da2b3ed8dba9" class="bulleted-list"><li style="list-style-type:disc">Clear signal that users find value in the equipment</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8022-893b-c3a51461e392" class="bulleted-list"><li style="list-style-type:disc">Leading indicator for gym operator satisfaction (visible utilization)</li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8095-8b63-d2c6420103c9" class="bulleted-list"><li style="list-style-type:disc">Cannot prove impact on gym renewals, but high usage makes equipment indispensable</li></ul></div><div style="display:contents" dir="auto"><hr id="3034dd3f-32f0-80bb-8ed9-c7fdb5379bf4"/></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-80b1-a514-e4e441fbe69c" class=""><em>Why 10 points is realistic:</em></p></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8022-9b60-d249274e9ded" class="bulleted-list"><li style="list-style-type:disc">Success screen addresses specific beginner pain point (confusion)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80af-9961-da60ca38eb58" class="bulleted-list"><li style="list-style-type:disc">Not claiming to solve all churn reasons (cost, time, motivation)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80f9-8160-df31c0f25015" class="bulleted-list"><li style="list-style-type:disc">Comparable to retention improvements from other coaching interventions (Peloton reports ~8-12% improvement from personalized feedback features)</li></ul></div></div></figure></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-80fd-a170-e8606e2181de" class="">
+</p></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>You Guardrail Metrics (Must NOT Degrade)</strong></summary><div class="indented"><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-8050-8b48-cd33b6505ac8" class="column-list"><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80f3-9c00-d2388164cfed" style="width:50%" class="column"><div style="display:contents" dir="ltr"><table id="3024dd3f-32f0-8023-bb02-cccaf61b5977" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-8080-a0e0-f0b24ea6b69c"><th id="U^[M" class="simple-table-header-color simple-table-header" style="width:167px"><strong>Metric</strong></th><th id="Io\V" class="simple-table-header-color simple-table-header" style="width:167px">Baseline</th><th id="L:Os" class="simple-table-header-color simple-table-header" style="width:167px"><strong>Threshold</strong></th><th id="_=xC" class="simple-table-header-color simple-table-header" style="width:167px"><strong>What We&#x27;re Protecting Against</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80a0-ac7b-c95a73e05965"><th id="U^[M" class="simple-table-header-color simple-table-header" style="width:167px">Within-session drop-off rate</th><td id="Io\V" class="" style="width:167px">TBD</td><td id="L:Os" class="" style="width:167px">No increase &gt;3%</td><td id="_=xC" class="" style="width:167px">Users don&#x27;t quit mid-workout due to confusing/demotivating feedback</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-807a-aa66-f3ac2cc1f3a1"><th id="U^[M" class="simple-table-header-color simple-table-header" style="width:167px">Average sets completed per session</th><td id="Io\V" class="" style="width:167px">TBD</td><td id="L:Os" class="" style="width:167px">No decrease &gt;10%</td><td id="_=xC" class="" style="width:167px">Users don&#x27;t rush through workouts to avoid success screen</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80b2-a1f2-f20c55d0dcde"><th id="U^[M" class="simple-table-header-color simple-table-header" style="width:167px">Net new user activation</th><td id="Io\V" class="" style="width:167px">TBD</td><td id="L:Os" class="" style="width:167px">No decrease &gt;5%</td><td id="_=xC" class="" style="width:167px">Feature doesn&#x27;t make onboarding harder for first-time users</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80c6-a3ab-f1c908c16ed5"><th id="U^[M" class="simple-table-header-color simple-table-header" style="width:167px">System performance (screen load time)</th><td id="Io\V" class="" style="width:167px">N/A</td><td id="L:Os" class="" style="width:167px">&lt;500ms at p95</td><td id="_=xC" class="" style="width:167px">Technical performance doesn&#x27;t degrade</td></tr></div></tbody></table></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80f4-a966-e99269a1c466" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3024dd3f-32f0-80f4-97e0-f9ff705d5ecc"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-8023-82d7-e9a5dbc1a27e" class=""><em>Why guardrails matter: </em><br/>Features can improve one metric while harming others. These prevent unintended consequences.</p></div><div style="display:contents" dir="auto"><hr id="3034dd3f-32f0-8033-a295-e3273b50a596"/></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-806c-ad61-f802fbab2816" class=""><em>Why these specific thresholds:</em></p></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8045-8ef5-c511dfb5ba98" class="bulleted-list"><li style="list-style-type:disc">3% drop-off: Some noise acceptable, but &gt;3% signals real frustration causing mid-workout abandonment</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8092-b2ef-c5a0cb06ceb2" class="bulleted-list"><li style="list-style-type:disc">10% sets completed: Small decreases OK (efficiency gains), but &gt;10% suggests users rushing to finish</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8034-986f-f378c545c371" class="bulleted-list"><li style="list-style-type:disc">5% activation: New user experience shouldn&#x27;t degrade; small variance acceptable but not major drops</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8026-bb11-f406cd9c6b18" class="bulleted-list"><li style="list-style-type:disc">500ms load: Industry standard; ensures feature doesn&#x27;t create technical friction</li></ul></div><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80b4-8e95-eefd089d9392" class="">
+</p></div></div></figure></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Kill Criteria (Beta Phase - Weeks 4-5)</strong></summary><div class="indented"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-80dc-9c29-d5f7334f3f31" class="">If ANY of these occur, pause rollout and reassess:</p></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80ed-a8d9-e0f65349d676" class="column-list"><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-80a7-a403-fc217ea8d860" style="width:62.5%" class="column"><div style="display:contents" dir="ltr"><table id="3024dd3f-32f0-805f-b3e1-e3a1f6f4b86d" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80bf-ad27-cad19e2acb75"><th id="e=\s" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>Criterion</strong></th><th id="shg]" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>Threshold</strong></th><th id="A^Id" class="simple-table-header-color simple-table-header" style="width:210.25px">What It Signals</th><th id="B_}z" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>Action if Triggered</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-801a-8cbb-dfc601ae4f32"><th id="e=\s" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>Retention decreases</strong></th><td id="shg]" class="" style="width:210.25px">Beta cohort retention &lt;control group</td><td id="A^Id" class="" style="width:210.25px">Feature is harmful, not helpful</td><td id="B_}z" class="" style="width:210.25px">Immediate pause → investigate why</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-8095-b12b-ee55dbe5ae02"><th id="e=\s" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>User comprehension failure</strong></th><td id="shg]" class="" style="width:210.25px">&lt;40% understand feedback</td><td id="A^Id" class="" style="width:210.25px">Feature creates confusion</td><td id="B_}z" class="" style="width:210.25px">Major redesign needed</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80b6-b645-df333f5d9459"><th id="e=\s" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>Negative engagement</strong></th><td id="shg]" class="" style="width:210.25px">Time on success screen decreases vs. baseline</td><td id="A^Id" class="" style="width:210.25px">Users actively avoiding feature</td><td id="B_}z" class="" style="width:210.25px">Investigate root cause, consider rollback</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-8044-adc4-f78b90cac18e"><th id="e=\s" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>Demotivation spike</strong></th><td id="shg]" class="" style="width:210.25px">&gt;25% report feeling &quot;criticised&quot; or &quot;bad”</td><td id="A^Id" class="" style="width:210.25px">Coaching tone is wrong</td><td id="B_}z" class="" style="width:210.25px">Soften language immediately or roll back</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80bd-a829-f40bd2c71746"><th id="e=\s" class="simple-table-header-color simple-table-header" style="width:210.25px"><strong>Technical failure</strong></th><td id="shg]" class="" style="width:210.25px">Screen load time &gt;1 second at p95</td><td id="A^Id" class="" style="width:210.25px">Performance unacceptable</td><td id="B_}z" class="" style="width:210.25px">Fix technical issue before proceeding</td></tr></div></tbody></table></div></div></div><div style="display:contents" dir="auto"><div id="3024dd3f-32f0-8079-954a-cbc28d354287" style="width:37.5%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3024dd3f-32f0-8098-b441-cd0256ab5602"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3024dd3f-32f0-8014-a018-db79f0506688" class=""><em>Decision framework:</em></p></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8076-93a2-cb5e5f0a0a12" class="bulleted-list"><li style="list-style-type:disc">1 kill criterion triggered once: Investigate deeply, adjust if needed, continue beta with caution</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80a1-94f4-eb85a47e7867" class="bulleted-list"><li style="list-style-type:disc">1 kill criterion triggered twice (consecutive weeks): Pause rollout, make changes before continuing</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80af-9972-c60165a76df1" class="bulleted-list"><li style="list-style-type:disc">2+ kill criteria triggered simultaneously: Immediate pause and reassessment</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80dc-8bb7-e6b9741f267c" class="bulleted-list"><li style="list-style-type:disc">Retention decrease criterion: Always triggers pause, regardless of other metrics</li></ul></div></div></figure></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-80a4-a023-c440a98e30e2" class="">
+</p></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Primary &amp; Secondary Metrics</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8058-932c-ece896725607" class="toggle"><li><details open=""><summary><strong>Primary Metrics (Measurable within 4-8 weeks)</strong></summary><div style="display:contents" dir="ltr"><table id="3024dd3f-32f0-80ca-bfa8-fc0b4b65cfd4" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-807a-a376-c618966ed297"><th id="I[sB" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Metric</strong></th><th id="nnHT" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Current Baseline</strong></th><th id="&gt;rJS" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Target</strong></th><th id="Ud~r" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Measurement Method</strong></th><th id="mU|s" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Why It Matters</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-8011-a592-ed57609e3210"><th id="I[sB" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Machine user retention (Month 3)</strong></th><td id="nnHT" class="" style="width:281.4px">~60-65%</td><td id="&gt;rJS" class="" style="width:281.4px">70-75%</td><td id="Ud~r" class="" style="width:281.4px">Cohort analysis via machine telemetry</td><td id="mU|s" class="" style="width:281.4px">North Star - are beginners sticking with equipment?</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-8023-a2a6-c29539c0708e"><th id="I[sB" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Time on success screen</strong></th><td id="nnHT" class="" style="width:281.4px">6 seconds</td><td id="&gt;rJS" class="" style="width:281.4px">12+ seconds</td><td id="Ud~r" class="" style="width:281.4px">Machine telemetry</td><td id="mU|s" class="" style="width:281.4px">Engagement with feature</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-8051-98d3-c9a0e3257bb7"><th id="I[sB" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>User comprehension score</strong></th><td id="nnHT" class="" style="width:281.4px">Unknown</td><td id="&gt;rJS" class="" style="width:281.4px">70%+ &quot;I understand what to improve&quot;</td><td id="Ud~r" class="" style="width:281.4px">Post-workout survey (10% sample)</td><td id="mU|s" class="" style="width:281.4px">Feature working as intended</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80e5-971b-cb6de79a7fd1"><th id="I[sB" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Phase quality improvement</strong></th><td id="nnHT" class="" style="width:281.4px">Baseline per user</td><td id="&gt;rJS" class="" style="width:281.4px">+7-10 percentage points by week 8</td><td id="Ud~r" class="" style="width:281.4px">Machine performance data</td><td id="mU|s" class="" style="width:281.4px">Users actually improving form</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80d3-90b3-cb44951f4a2a"><th id="I[sB" class="simple-table-header-color simple-table-header" style="width:281.4px"><strong>Weekly active users (WAU)</strong></th><td id="nnHT" class="" style="width:281.4px">Baseline</td><td id="&gt;rJS" class="" style="width:281.4px">No decrease</td><td id="Ud~r" class="" style="width:281.4px">Machine telemetry</td><td id="mU|s" class="" style="width:281.4px">Frequency proxy - users coming back regularly</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-807f-99fb-c07a649ad049" class="toggle"><li><details open=""><summary><strong>Secondary Metrics (Measurable within 3-6 months)</strong></summary><div style="display:contents" dir="ltr"><table id="3024dd3f-32f0-800d-a413-c9d0591c987c" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-809a-b7ee-d511a8328da2"><th id="bElK" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Metric</strong></th><th id="f&lt;&gt;N" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Target</strong></th><th id="Z|hH" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Why It Matters</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-8031-97e2-da7cfed31e36"><th id="bElK" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Comparison section expansion rate</strong></th><td id="f&lt;&gt;N" class="" style="width:469px">&gt;50% of users expand ≥1 section in first 4 weeks</td><td id="Z|hH" class="" style="width:469px">Shows users want deeper insights; Feature discovery and engagement</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-803d-a847-c92f55ff6092"><th id="bElK" class="simple-table-header-color simple-table-header" style="width:469px"><strong>User satisfaction (NPS)</strong></th><td id="f&lt;&gt;N" class="" style="width:469px">+10 points vs. baseline</td><td id="Z|hH" class="" style="width:469px">Overall experience quality</td></tr></div><div style="display:contents" dir="ltr"><tr id="3024dd3f-32f0-80c6-90ba-ee2bae1b8843"><th id="bElK" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Session consistency</strong></th><td id="f&lt;&gt;N" class="" style="width:469px">&gt;60% of users have ≤7 days between sessions</td><td id="Z|hH" class="" style="width:469px">Regular usage pattern forming</td></tr></div></tbody></table></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Measurement Plan</summary><div class="indented"><div style="display:contents" dir="auto"><div id="3034dd3f-32f0-8014-b552-e33af216ac19" class="column-list"><div style="display:contents" dir="auto"><div id="3034dd3f-32f0-80e8-86d0-d24a54af87ce" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-8074-a5e6-fff86415ace2" class="toggle"><li><details open=""><summary><strong>Quantitative</strong></summary><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8058-b5f9-e92e04a5908a" class="bulleted-list"><li style="list-style-type:disc"><strong>Automatic (Machine Telemetry):</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80af-aed9-c824fef5154a" class="bulleted-list"><li style="list-style-type:circle">User sessions (who, when, which machine, duration)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8043-9954-d7ab29217e28" class="bulleted-list"><li style="list-style-type:circle">Success screen interactions (time spent, sections expanded, clicks)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8008-bb9c-c3ccbe58f3d1" class="bulleted-list"><li style="list-style-type:circle">Performance data (eccentric/concentric phase quality per set)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-800e-a0b8-e7b9733f9c07" class="bulleted-list"><li style="list-style-type:circle">System performance (load times, errors)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80ae-8275-d1c7c4902eed" class="bulleted-list"><li style="list-style-type:disc"><strong>Weekly Snapshots:</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80c7-98f8-f1504a6dfa4d" class="bulleted-list"><li style="list-style-type:circle">Cohort retention rates (beta vs. control)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8031-9c37-dfde9d82c835" class="bulleted-list"><li style="list-style-type:circle">Engagement metrics (time on screen, interaction rates)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-806d-81aa-e2dbef3a9ff3" class="bulleted-list"><li style="list-style-type:circle">Performance trends (form quality improvements)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8033-93c3-ddbde894197f" class="bulleted-list"><li style="list-style-type:disc"><strong>Monthly Analysis:</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-802e-a82c-c44159e7db5e" class="bulleted-list"><li style="list-style-type:circle">Cohort survival curves (visualize retention over time)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80dc-997f-e8b357236cb9" class="bulleted-list"><li style="list-style-type:circle">Segmentation (does retention differ by age, gender, machine type?)</li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-802b-b4b6-f2a3c2b3325e" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="3034dd3f-32f0-8074-86c3-fb49a4f75706" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-805f-8dca-f06e3e787f79" class="toggle"><li><details open=""><summary><strong>Qualitative</strong></summary><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8081-8841-ce8189524fa6" class="bulleted-list"><li style="list-style-type:disc"><strong>Micro-surveys (10% random sample):</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-806b-afbe-c88456dc6a5c" class="bulleted-list"><li style="list-style-type:circle">Trigger: After workout completion</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80a7-aed8-ff74a1f232b5" class="bulleted-list"><li style="list-style-type:circle">Question: &quot;Did today&#x27;s success screen help you understand what to improve?&quot; (Yes / Somewhat / No)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8006-9b81-c8530f60451d" class="bulleted-list"><li style="list-style-type:circle">Follow-up (if No): &quot;What was confusing?&quot; (Open text, optional)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-809c-9962-fb5f5b4945e1" class="bulleted-list"><li style="list-style-type:disc"><strong>User Interviews (5-10 users/month from beta gyms):</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80d2-a47f-cf1da9fa50e0" class="bulleted-list"><li style="list-style-type:circle">Week 2-3 of using new success screen</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80e5-9181-d1bb35b82f7a" class="bulleted-list"><li style="list-style-type:circle">Questions: What do you remember from success screen? Did you change anything based on feedback? How does it make you feel?</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-804d-b0ab-ccb44c452368" class="bulleted-list"><li style="list-style-type:circle">Goal: Understand why retention improves (or doesn&#x27;t)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-804a-bb97-d7243942c297" class="bulleted-list"><li style="list-style-type:disc"><strong>Gym Staff Check-ins (Bi-weekly during beta):</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-808f-8d8b-e6672c0ee847" class="bulleted-list"><li style="list-style-type:circle">Brief calls with trainers/front desk staff</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8084-900d-e10a7476fb86" class="bulleted-list"><li style="list-style-type:circle">Questions: Are members asking about the new screen? Any complaints? Any praise?</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8065-a26a-eae3b5f30523" class="bulleted-list"><li style="list-style-type:circle">Goal: Early warning system for issues</li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-809e-84ad-f04c075f582f" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="3034dd3f-32f0-80d7-b428-d491ca00131f" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="3024dd3f-32f0-80f9-a2a0-f6cb4c980d4c" class="toggle"><li><details open=""><summary><strong>Reporting Cadence</strong></summary><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80bb-b5c8-f03b8df74a9a" class="bulleted-list"><li style="list-style-type:disc"><strong>Daily:</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8053-8ced-dbf6ec3cbf35" class="bulleted-list"><li style="list-style-type:circle">Real-time dashboard of engagement metrics (time on screen, interaction rates)</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-805f-836a-d8ac29708ed5" class="bulleted-list"><li style="list-style-type:circle">Automated alerts if guardrails breached or kill criteria triggered</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80da-baab-f7c31239bc18" class="bulleted-list"><li style="list-style-type:disc"><strong>Weekly:</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80fe-bdf1-e4e2cca6578f" class="bulleted-list"><li style="list-style-type:circle">Beta steering meeting</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80ce-80a4-c83be8f2e31a" class="bulleted-list"><li style="list-style-type:circle">Review: Cohort retention trends, qualitative feedback themes, any red flags</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80f8-bddf-fdd13a3da0b8" class="bulleted-list"><li style="list-style-type:circle">Decide: Continue beta as planned / Make adjustments / Pause or rollback</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8075-926f-f73cf08bf1cb" class="bulleted-list"><li style="list-style-type:disc"><strong>Monthly:</strong><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8048-b93d-dc577ae8c3fa" class="bulleted-list"><li style="list-style-type:circle">Executive summary</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-80cf-92da-cfb6464640c0" class="bulleted-list"><li style="list-style-type:circle">Focus: Retention rate progress toward target, key learnings, go/no-go recommendation for next phase</li></ul></div><div style="display:contents" dir="auto"><ul id="3034dd3f-32f0-8076-8a2a-e53faa25d6af" class="bulleted-list"><li style="list-style-type:circle">Include: User quotes, example success stories, identified risks</li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="3034dd3f-32f0-80cd-bfae-de5bf9cd4942" class="">
+</p></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-8021-9519-d2a74112a93c" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="3014dd3f-32f0-8015-bc77-c3e0c02f86b2"/></div><div style="display:contents" dir="auto"><h1 id="2ff4dd3f-32f0-8059-9a28-f36af4a0ecc5" class="">Key Risks &amp; Validation Strategy</h1></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8097-9ca8-fb7e31cb5230" class="toggle"><li><details open=""><summary><strong>Concerns, Validation Approach &amp; Risk Mitigation</strong></summary><div style="display:contents" dir="ltr"><table id="2ff4dd3f-32f0-803d-8153-c464f5ead57d" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-8056-b416-d63e8e41dd0a"><th id="JwK=" class="simple-table-header-color simple-table-header" style="width:287px"></th><th id="dypV" class="simple-table-header-color simple-table-header" style="width:287px"><strong>User Engagement Risk</strong></th><th id="yKp&lt;" class="simple-table-header-color simple-table-header" style="width:287px"><strong>Peer Comparison Psychology</strong></th><th id="filv" class="simple-table-header-color simple-table-header" style="width:287px"><strong>Coaching Accuracy</strong></th><th id="CQ:u" class="simple-table-header-color simple-table-header" style="width:287px"><strong>Technical Data Availability</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-8058-8f03-fb786bd7cbdc"><th id="JwK=" class="simple-table-header-color simple-table-header" style="width:287px"><strong>Concerns</strong></th><td id="dypV" class="" style="width:287px">Users may not engage with additional feedback, especially if perceived as overwhelming or critical.</td><td id="yKp&lt;" class="" style="width:287px">Users in lower percentiles may experience demotivation, potentially increasing churn rather than reducing it.</td><td id="filv" class="" style="width:287px">Algorithmic coaching tips may be incorrect, irrelevant, or potentially harmful if they lead to injury.</td><td id="CQ:u" class="" style="width:287px">Machines may not currently capture granular phase-specific data, or data quality may be insufficient for accurate coaching.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-80b9-bb47-e00d8f93520b"><th id="JwK=" class="simple-table-header-color simple-table-header" style="width:287px"><strong>Validation Approach</strong></th><td id="dypV" class="" style="width:287px">• Eye-tracking studies in actual gym environments<br/>• Session duration analysis (time spent reviewing success screen)<br/>• User comprehension surveys post-workout<br/>• A/B testing with control and treatment groups</td><td id="yKp&lt;" class="" style="width:287px">• Cohort analysis comparing retention rates across percentile groups<br/>• Sentiment surveys about comparison features<br/>• A/B testing of different framing approaches</td><td id="filv" class="" style="width:287px">• Expert review by certified trainers before launch<br/>• User comprehension testing (&quot;can you explain what this tip is asking?&quot;)<br/>• Outcome tracking (does following tips improve subsequent performance?)<br/>• Feedback mechanisms for users to report unhelpful or confusing tips</td><td id="CQ:u" class="" style="width:287px">• Technical audit of current machine telemetry and sampling rates<br/>• Prototype testing with actual machine data to verify quality<br/>• Performance analysis to ensure real-time processing is viable</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-80ee-ba3a-c98703d3100e"><th id="JwK=" class="simple-table-header-color simple-table-header" style="width:287px"><strong>Mitigation</strong></th><td id="dypV" class="" style="width:287px">If engagement is &lt;40% after Week 1 of beta, we&#x27;ll add a subtle animation (highlighting the coaching section) to draw attention. If that doesn&#x27;t work by Week 2, we&#x27;ll make coaching section full-width and move comparisons to separate tab.</td><td id="yKp&lt;" class="" style="width:287px">Positive framing (&quot;top 35%&quot; vs &quot;65th percentile&quot;), opt-in rather than default, or delayed introduction until users have established baseline confidence. Monitor dropout rates closely and adjust or remove if negative impact is detected.</td><td id="filv" class="" style="width:287px">Conservative tip library focusing on common, clearly-identifiable issues. Confidence thresholds to avoid tips for marginal cases. Human review process before deployment.</td><td id="CQ:u" class="" style="width:287px">If data gaps exist, prioritize features that work with available data while roadmapping hardware improvements for future iterations.</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-804d-a781-e7213a5613fc" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="3014dd3f-32f0-80f1-9375-e52fef7cedf2"/></div><div style="display:contents" dir="auto"><h1 id="2ff4dd3f-32f0-8089-9e2b-f57c3715c265" class="">Next Steps</h1></div><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-80fe-bca6-c16e9a4345d7" class="column-list"><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-8055-b5bc-ce7b1571e798" style="width:50%" class="column"><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-803d-a77e-f3ac59f00b6f" class="toggle"><li><details open=""><summary><strong>Open questions requiring further research</strong></summary><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8048-9289-c1ba1a73a06d" class="bulleted-list"><li style="list-style-type:disc">Optimal timing for introducing peer comparisons (immediate vs. after baseline establishment)</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8094-9f11-cd04391ce83e" class="bulleted-list"><li style="list-style-type:disc">Cultural localization needs for coaching tone and framing</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-80c6-b029-c241cf463740" class="bulleted-list"><li style="list-style-type:disc">Hardware data capture limitations across different machine generations</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8047-aeca-c0167342463a" class="bulleted-list"><li style="list-style-type:disc">Trainer adoption and advocacy strategies</li></ul></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="3014dd3f-32f0-80ee-a3c0-e4ef67e2fd5c" style="width:50%" class="column"><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8064-8cac-f007fa942a1f" class="toggle"><li><details open=""><summary><strong>Ideal next steps</strong></summary><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8080-97bb-f051e021b8cd" class="bulleted-list"><li style="list-style-type:disc">User testing with prototype in actual gym environment</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8049-a302-eed3acafb205" class="bulleted-list"><li style="list-style-type:disc">Technical validation with EGYM engineering team</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-8024-a5c4-ccccd076bef7" class="bulleted-list"><li style="list-style-type:disc">Trainer interviews to validate coaching accuracy</li></ul></div><div style="display:contents" dir="auto"><ul id="3014dd3f-32f0-800d-b2e1-c808f653a1bf" class="bulleted-list"><li style="list-style-type:disc">Small-scale pilot to measure actual impact on retention and form quality</li></ul></div></details></li></ul></div></div></div></div></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-800e-aa49-d11735cb26d1" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2ff4dd3f-32f0-80a1-bacb-f4d9c79b6336"/></div><div style="display:contents" dir="auto"><hr id="2ff4dd3f-32f0-8016-bad1-ca129bdd818b"/></div><div style="display:contents" dir="auto"><hr id="2ff4dd3f-32f0-808f-92e3-e888ac3ee365"/></div><div style="display:contents" dir="auto"><h1 id="2ff4dd3f-32f0-80a9-b159-eeb795fc2510" class="">Appendix</h1></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Tertiary Persona: The Trainer / Gym Staff</strong></summary><div class="indented"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-800e-8982-c5fd3e79a1f8" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8036-ad88-f27c7b0ed9c3" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="2ff4dd3f-32f0-80ec-9072-f3afd8997f75" class="image"><a href="EGYM%20-%20Post-Set%20Success%20Screen/image%205.png"><img style="width:586.9921875px" src="EGYM%20-%20Post-Set%20Success%20Screen/image%205.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8011-953f-fd665e957bfc" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8027-abee-f1e342cdb9cc" class=""><strong>Current workflow:</strong></p></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-801e-ba08-e23e3ce17ea2" class="bulleted-list"><li style="list-style-type:disc">Introduces new members to machines</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-801c-bdf5-cb0efa57f464" class="bulleted-list"><li style="list-style-type:disc">Monitors form during sessions</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-806f-be30-ff43d2d49fa2" class="bulleted-list"><li style="list-style-type:disc">Answers recurring questions: &quot;Is this weight right for me?&quot; &quot;Am I doing this correctly?&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-804c-ac41-e7fd278e21b2" class="bulleted-list"><li style="list-style-type:disc">Tracks member progress manually or via EGYM trainer app</li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8019-967c-e5e2be10f739" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80c3-b357-f3da5cfc913f" class=""><strong>Why he matters:</strong><div class="indented"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8074-b65a-dbd55b79d711" class="bulleted-list"><li style="list-style-type:disc">Trainers influence member adoption—if they&#x27;re skeptical, members won&#x27;t engage</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-808f-b86f-ef80be6a36aa" class="bulleted-list"><li style="list-style-type:disc">They&#x27;re boots-on-the-ground feedback source for what actually helps users</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-800f-b52d-e91e07af4376" class="bulleted-list"><li style="list-style-type:disc">Their satisfaction impacts gym owner satisfaction with EGYM platform</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8024-8e6e-cfb841f95166" class="bulleted-list"><li style="list-style-type:disc">They&#x27;re potential power users of advanced features</li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-802c-9886-c17ee9ac3fb1" class="">
+</p></div></div></p></div></div></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8022-bbeb-eae3494b7d52" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8003-94f9-fe7776151926" style="width:50%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ce-9eb6-dc46f3cf5760" class="toggle"><li><details open=""><summary><strong>Pain points:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80a5-bcfb-ea3ef839b665" class="bulleted-list"><li style="list-style-type:disc">Spends significant time on basic questions that could be automated</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80a8-9122-f461b7770b73" class="bulleted-list"><li style="list-style-type:disc">Hard to scale—can only watch one person at a time</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80fc-9b9d-f824e76ccd3d" class="bulleted-list"><li style="list-style-type:disc">Members train independently and develop bad habits between sessions</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80b1-9ea4-f02aa3071bdc" class="bulleted-list"><li style="list-style-type:disc">No easy way to identify which members need intervention</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80ac-bcc2-f209ef256a60" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8074-8ecf-e0c299fc4384" style="width:50%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-803b-a65c-c40df9f83d3a" class="toggle"><li><details open=""><summary><strong>What he needs to become an advocate:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80e9-ba5c-dae141396dd0" class="bulleted-list"><li style="list-style-type:disc">Trainer dashboard showing which members have poor form scores (enables proactive outreach)</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8029-bd30-f16a6409a8f8" class="bulleted-list"><li style="list-style-type:disc">Ability to customize coaching tips per member (maintains his expert role)</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80bb-9775-c28d9c71d225" class="bulleted-list"><li style="list-style-type:disc">Credit for improvements—&quot;Your form improved because of Tom&#x27;s coaching <em>and</em> machine feedback&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8033-8759-cc785ce3af03" class="bulleted-list"><li style="list-style-type:disc">Evidence that automated coaching improves member outcomes (makes his job easier, not obsolete)</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8068-9800-dac76bccfdd7" class="">
+</p></div></div></div></div></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Competitive Analysis</strong></summary><div class="indented"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8096-b2ef-d7fe13a50501" class="toggle"><li><details open=""><summary><strong>Market Landscape</strong></summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80c1-ae6b-d1ef92922cd6" class="">The smart fitness equipment market is shifting from hardware differentiation to coaching experience differentiation. Key competitors:</p></div><div style="display:contents" dir="ltr"><table id="2ff4dd3f-32f0-80c8-b362-fd500b0f75d6" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-8002-95ed-ead30f924005"><th id="XTEt" class="simple-table-header-color simple-table-header" style="width:351.75px"></th><th id="pJCU" class="simple-table-header-color simple-table-header" style="width:351.75px"><strong>Tonal (primary competitor)</strong></th><th id="oTiY" class="simple-table-header-color simple-table-header" style="width:351.75px"><strong>Mirror (secondary - different modality)</strong></th><th id="B~U\" class="simple-table-header-color simple-table-header" style="width:351.75px"><strong>Peloton Strength (emerging threat)</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-80bf-850c-e7657545bcfa"><th id="XTEt" class="simple-table-header-color simple-table-header" style="width:351.75px">Strength</th><td id="pJCU" class="" style="width:351.75px">Real-time rep counting, form feedback via computer vision</td><td id="oTiY" class="" style="width:351.75px">Live trainer-led classes, community features</td><td id="B~U\" class="" style="width:351.75px">Strong brand, established ecosystem, guided programs</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-804d-b9a7-f018ba74b4fb"><th id="XTEt" class="simple-table-header-color simple-table-header" style="width:351.75px">Weakness</th><td id="pJCU" class="" style="width:351.75px">No phase-specific metrics, limited to cable-based movements</td><td id="oTiY" class="" style="width:351.75px">No automatic load adjustment, limited strength focus</td><td id="B~U\" class="" style="width:351.75px">No connected equipment, manual tracking required</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-801f-a664-cfe93c7ceb58"><th id="XTEt" class="simple-table-header-color simple-table-header" style="width:351.75px">Coaching Approach</th><td id="pJCU" class="" style="width:351.75px">Audio cues during workout + post-workout summary</td><td id="oTiY" class="" style="width:351.75px">Human trainer via video, not data-driven</td><td id="B~U\" class="" style="width:351.75px">Video instruction + manual logging</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-80d0-9946-f315687dbb4a"><th id="XTEt" class="simple-table-header-color simple-table-header" style="width:351.75px">Retention</th><td id="pJCU" class="" style="width:351.75px">~75% at 6 months (estimated from public statements)</td><td id="oTiY" class="" style="width:351.75px">High for live class users, lower for on-demand</td><td id="B~U\" class="" style="width:351.75px">Benefiting from Bike/Tread ecosystem halo effect</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-809f-bbb3-e23888d8d7fa" class="toggle"><li><details open=""><summary><strong>Threats &amp; Responses</strong></summary><div style="display:contents" dir="ltr"><table id="2ff4dd3f-32f0-8059-b39b-e55f0ed4cbff" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-8014-a585-d4e65a3a029b"><th id="wjsz" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Threat 1: Tonal expands to gyms</strong></th><th id="Dxv\" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Threat 2: Traditional equipment adds tracking</strong></th><th id="wsAK" class="simple-table-header-color simple-table-header" style="width:469px"><strong>Threat 3: Free apps (Strong, Hevy) improve UX</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-8087-9746-d3bd87e1f480"><td id="wjsz" class="" style="width:469px">Tonal&#x27;s home-only model limits reach, but B2B expansion is possible. Their computer vision form feedback is more sophisticated than EGYM&#x27;s curve.</td><td id="Dxv\" class="" style="width:469px">Life Fitness, Technogym could add sensors and screens to existing machines.</td><td id="wsAK" class="" style="width:469px">Users might prefer manual logging with great UX over automatic logging with poor UX.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ff4dd3f-32f0-806b-9ad9-f08e2bdfbf5b"><td id="wjsz" class="" style="width:469px"><em>Response:</em> Phase-specific coaching based on actual force measurements (not vision inference) is more accurate for strength training. Emphasize this in positioning.</td><td id="Dxv\" class="" style="width:469px"><em>Response:</em> Software advantage compounds over time. EGYM&#x27;s coaching algorithms improve with data; hardware-only solutions start from scratch.</td><td id="wsAK" class="" style="width:469px"><em>Response:</em> Automatic + great UX is the winning combination. This feature moves EGYM toward that quadrant.</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8006-bfc6-deb821c4c054" class="toggle"><li><details open=""><summary><strong>Positioning Post-Launch</strong></summary><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-80ff-a82b-c20c87a438f0" class=""><strong>Before:</strong> &quot;Smart machines that auto-adjust and track your workouts&quot;</p></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-807f-9f5d-c05286fe7da5" class=""><strong>After:</strong> &quot;The only strength equipment that coaches you in real-time, using data competitors can&#x27;t measure&quot;</p></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8023-b881-d983ea6a5645" class=""><strong>Sales Enablement:</strong></p></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80ca-96dc-f02a6662b41f" class="bulleted-list"><li style="list-style-type:disc">Demo video showing phase-specific coaching in action</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8052-a31a-f59e8af94b1c" class="bulleted-list"><li style="list-style-type:disc">Comparison chart emphasizing unique data capabilities</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80f2-a819-fa5999ce40bc" class="bulleted-list"><li style="list-style-type:disc">Retention metrics vs. traditional equipment</li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8059-8d25-fb861bc7222c" class=""><strong>Marketing Angle:</strong><br/>&quot;Your personal strength coach, built into every machine&quot;</p></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80ad-a295-fcf61d4a32c2" class="">
+</p></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Design Principles</strong></summary><div class="indented"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8035-974f-e662f563562d" class="bulleted-list"><li style="list-style-type:disc"><strong>Tablet-optimized:</strong> Fixed-height panels with accordion behavior prevent overwhelm on smaller screens.</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80bc-8970-ec7ad06c5eb9" class="bulleted-list"><li style="list-style-type:disc"><strong>Progressive disclosure:</strong> Most important information (coaching + execution quality) visible by default. Comparisons hidden until requested.</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8023-8ec8-cb3a50533034" class="bulleted-list"><li style="list-style-type:disc"><strong>Beginner-first language:</strong> Terms like &quot;Muskelanspannung&quot; and &quot;Muskelentspannung&quot; with tooltips that explain concentric/eccentric phases in accessible language.</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-800e-804e-c009372d338f" class="bulleted-list"><li style="list-style-type:disc"><strong>Consistent architecture:</strong> Same insights available across machine UI, member app, and trainer app for a cohesive experience.</li></ul></div><div style="display:contents" dir="auto"><p id="3014dd3f-32f0-80a8-ae54-d3a0db7eb833" class="">
+</p></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Thinking beyond the Success Screen: Additional Solutions</strong></summary><div class="indented"><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-8090-89cf-fa32f089b9af" class="">This redesign addresses the most immediate opportunity, but there&#x27;s a broader ecosystem of potential improvements:</p></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80aa-87a2-daa4df16aac8" class="column-list"><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-8068-b601-f6293360a884" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80c1-a239-ed73b97048ad" class="toggle"><li><details open=""><summary><strong>Enhanced Feedback:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80f5-993e-f6d808a1249b" class="bulleted-list"><li style="list-style-type:disc">Real-time form correction during sets (not just post-set)</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8057-8fea-dd3167690b1f" class="bulleted-list"><li style="list-style-type:disc">Video playback showing actual form vs. ideal execution</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-801d-be8d-daf35fde71fb" class="bulleted-list"><li style="list-style-type:disc">Voice coaching for audio feedback during reps</li></ul></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80ac-a37c-de2d999550b6" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-806a-a6f5-e9db79d30814" class="toggle"><li><details open=""><summary><strong>Progress Tracking:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-806c-b026-e8bd77f29973" class="bulleted-list"><li style="list-style-type:disc">Visual timeline of strength gains over weeks/months</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80de-bb6d-ceaf7609204f" class="bulleted-list"><li style="list-style-type:disc">Program completion tracker with milestone celebrations</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-805b-a7a9-d1a16fc20f03" class="bulleted-list"><li style="list-style-type:disc">Automatic weight increase recommendations based on performance trends</li></ul></div></details></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="2ff4dd3f-32f0-80bf-9054-d40bced1800f" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8094-b804-e4514b48c63d" class="toggle"><li><details open=""><summary><strong>Engagement &amp; Motivation:</strong></summary><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-8042-8e9b-d677fa476157" class="bulleted-list"><li style="list-style-type:disc">Achievement badges for consistent training</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-80b1-afce-e0b03c259c10" class="bulleted-list"><li style="list-style-type:disc">Workout streak tracking</li></ul></div><div style="display:contents" dir="auto"><ul id="2ff4dd3f-32f0-801d-b86c-cc5f5162c47b" class="bulleted-list"><li style="list-style-type:disc">Better third-party app integration for users&#x27; preferred platforms</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2ff4dd3f-32f0-806b-b090-f6c7a45cb285" class="">
+</p></div></div></div></div></div></div></details></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
